@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>794</width>
+    <width>1834</width>
     <height>600</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -190,7 +196,7 @@ border-radius: 2px;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
+      <width>811</width>
       <height>61</height>
      </rect>
     </property>
@@ -201,15 +207,15 @@ border-radius: 2px;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>10</y>
        <width>281</width>
-       <height>25</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Fixedsys</family>
-       <pointsize>12</pointsize>
+       <family>Ink Free</family>
+       <pointsize>26</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -265,7 +271,7 @@ border: solid black 4px;
      <rect>
       <x>120</x>
       <y>60</y>
-      <width>681</width>
+      <width>691</width>
       <height>541</height>
      </rect>
     </property>
@@ -432,7 +438,7 @@ border-radius: 2px;</string>
       </font>
      </property>
      <property name="text">
-      <string>Клиент успешно добавлен</string>
+      <string/>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_8">
@@ -478,9 +484,9 @@ border-radius: 2px;</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>130</x>
       <y>60</y>
-      <width>671</width>
+      <width>681</width>
       <height>551</height>
      </rect>
     </property>
@@ -519,12 +525,12 @@ border-radius: 2px;</string>
      <rect>
       <x>0</x>
       <y>-10</y>
-      <width>791</width>
+      <width>811</width>
       <height>611</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(109, 109, 109);</string>
+     <string notr="true">background-color: rgb(120, 120, 120);</string>
     </property>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -595,7 +601,7 @@ border-radius: 10px;</string>
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(99, 78, 255);
+      <string notr="true">border-color: rgb(96, 33, 255);
 background-color: rgb(255, 255, 255);
 border-radius: 10px;
 border: 3px  solid rgb(16, 76, 66);</string>
@@ -657,7 +663,7 @@ border: 3px  solid rgb(16, 76, 66);</string>
       <x>200</x>
       <y>190</y>
       <width>501</width>
-      <height>251</height>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -668,7 +674,7 @@ border-radius: 20px;</string>
     <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>160</x>
        <y>10</y>
        <width>221</width>
        <height>31</height>
@@ -693,8 +699,8 @@ border-radius: 20px;</string>
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>70</y>
-       <width>161</width>
+       <y>60</y>
+       <width>211</width>
        <height>31</height>
       </rect>
      </property>
@@ -703,8 +709,8 @@ border-radius: 20px;</string>
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>110</y>
-       <width>161</width>
+       <y>100</y>
+       <width>211</width>
        <height>31</height>
       </rect>
      </property>
@@ -713,8 +719,8 @@ border-radius: 20px;</string>
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>150</y>
-       <width>161</width>
+       <y>180</y>
+       <width>211</width>
        <height>31</height>
       </rect>
      </property>
@@ -723,7 +729,7 @@ border-radius: 20px;</string>
      <property name="geometry">
       <rect>
        <x>340</x>
-       <y>200</y>
+       <y>230</y>
        <width>151</width>
        <height>35</height>
       </rect>
@@ -739,8 +745,8 @@ border-radius: 2px;</string>
     <widget class="QPushButton" name="pushButton_14">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>200</y>
+       <x>10</x>
+       <y>230</y>
        <width>151</width>
        <height>35</height>
       </rect>
@@ -757,7 +763,7 @@ border-radius: 2px;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>80</y>
+       <y>70</y>
        <width>51</width>
        <height>21</height>
       </rect>
@@ -779,7 +785,7 @@ border-radius: 2px;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>120</y>
+       <y>110</y>
        <width>101</width>
        <height>21</height>
       </rect>
@@ -797,6 +803,60 @@ border-radius: 2px;</string>
       <string>Компания</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>180</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;</string>
+     </property>
+     <property name="text">
+      <string>Дата</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_8">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>140</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>140</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0px;</string>
+     </property>
+     <property name="text">
+      <string>Адрес</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget_7" native="true">
     <property name="enabled">
@@ -804,7 +864,7 @@ border-radius: 2px;</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>130</x>
       <y>60</y>
       <width>681</width>
       <height>551</height>
@@ -847,9 +907,9 @@ border-radius: 2px;</string>
    <zorder>calendarWidget</zorder>
    <zorder>widget_3</zorder>
    <zorder>widget_5</zorder>
-   <zorder>widget_6</zorder>
    <zorder>widget_7</zorder>
    <zorder>widget_4</zorder>
+   <zorder>widget_6</zorder>
   </widget>
  </widget>
  <resources/>

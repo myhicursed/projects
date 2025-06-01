@@ -192,7 +192,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def FindBusFromVin(self):
         vin = self.lineEdit_vin_find.text()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM bus WHERE vin = %s;",
+        cursor.execute("""SELECT state_number AS "Гос.Номер", VIN, model as "Модель", year_of_release as "Год", odometer as "Пробег" FROM bus WHERE VIN = %s;""",
                        (vin, ))
         len_row = cursor.rowcount
         rows = cursor.fetchall()

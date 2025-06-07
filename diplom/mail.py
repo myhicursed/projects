@@ -24,13 +24,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_4.clicked.connect(self.open_stats_windows)
         self.pushButton_6.clicked.connect(self.AddNewBus)
         self.pushButton_7.clicked.connect(self.FindBusFromVin)
+        self.pushButton_8.clicked.connect(self.SendToService)
+        self.pushButton_12.clicked.connect(self.load_static_map)
         #########################################################################
         self.map_scene = QGraphicsScene()
         self.graphicsView.setScene(self.map_scene)  # Используем уже созданный graphicsView
 
 
         # Первая загрузка карты
-        self.load_static_map()
+        #self.load_static_map()
 
 
         ########################################################
@@ -87,22 +89,66 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.widgetRoutes.setVisible(False)
         self.widget_5.setVisible(False)
 
+    def get_coordinates(self, place_name, api_key):
+        geocoder_url = f"https://geocode-maps.yandex.ru/1.x/"
+        params = {
+            'apikey': api_key,
+            'geocode': place_name,
+            'format': 'json'
+        }
+
+        response = requests.get(geocoder_url, params=params)
+        if response.status_code == 200:
+            data = response.json()
+            try:
+                pos = data['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']
+                longitude, latitude = pos.split()
+                return f"{longitude},{latitude}"
+            except (KeyError, IndexError):
+                return None
+        return None
 
     def load_static_map(self):
-        """Загружает статичную карту с маршрутом Подольск-Чехов"""
+        """Загружает статичную карту с маршрутом по 5 точкам"""
         try:
-            # Координаты (Подольск → Чехов)
-            podolsk = "37.5547,55.4242"  # Обратите порядок: долгота,широта!
-            chekhov = "37.4873,55.1527"
-            size = "650,450"  # Теперь с запятой, как требует API
+            # Получаем координаты для всех 5 точек
+            points = []
+            for line_edit in [self.lineEdit_13, self.lineEdit_14,
+                              self.lineEdit_15, self.lineEdit_16,
+                              self.lineEdit_17]:  # Добавьте ваши QLineEdit для точек C, D, E
+                if line_edit.text().strip():
+                    coords = self.get_coordinates(line_edit.text(), '017c25cb-c2fe-43ef-b58e-e49320ff407e')
+                    if coords:
+                        points.append(coords)
+
+            if len(points) < 2:
+                raise Exception("Необходимо указать минимум 2 точки маршрута")
+
+            size = "650,450"
             api_key = "08b76ad6-f685-4f52-b73d-ea6981593637"
 
-            # Формируем URL строго по документации
+            # Формируем часть URL с линией маршрута
+            pl_part = f"&pl=c:8822DDC0,w:5,{','.join(points)}" if len(points) > 1 else ""
+
+            # Формируем часть URL с метками точек
+            pt_parts = []
+            for i, point in enumerate(points):
+                # Разные иконки для первой, последней и промежуточных точек
+                if i == 0:
+                    marker = "pm2rdm"  # Красная метка
+                elif i == len(points) - 1:
+                    marker = "pm2blm"  # Синяя метка
+                else:
+                    marker = "pm2grm"  # Зеленая метка для промежуточных точек
+                pt_parts.append(f"{point},{marker}")
+
+            pt_part = f"&pt={'~'.join(pt_parts)}"
+
             url = (
                 f"https://static-maps.yandex.ru/v1?"
                 f"size={size}"
-                f"&pl=c:8822DDC0,w:5,{podolsk},{chekhov}"  # Ломаная линия
-                f"&pt={podolsk},pm2rdm~{chekhov},pm2blm"  # Метки
+                f"{pl_part}"  # Ломаная линия
+                f"{pt_part}"  # Метки
                 f"&apikey={api_key}"
             )
 
@@ -151,6 +197,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             )
         except:
             print('Не удалось установить соединение')
+        self.label_8.setText("hello")
 
     def authorizationForUser(self):
         l_conn = psycopg2.connect(
@@ -171,10 +218,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         current_password = record_password[0]
         if u_password == current_password[0]:
             print('Авторизация пройдена')
-            cursor.close()
             self.authorizationToDatabaseFromDispatcher()
             print(f'login: {u_login}')
             self.widget_3.setVisible(False)
+            cursor.execute(""" SELECT COUNT(bus_id) FROM bus; """)
+            self.label_8.setText("Всего автобусов в парке: " + str(cursor.fetchall()[0][0]))
+            cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> true; """)
+            self.label_9.setText("Исправных: " + str(cursor.fetchall()[0][0]))
+            cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> false; """)
+            self.label_10.setText("В ремонте: " + str(cursor.fetchall()[0][0]))
+            cursor.close()
         else:
             print('Неверный логин/пароль')
 
@@ -206,6 +259,21 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 item = QTableWidgetItem(str(rows[i][j]))
                 self.tableWidget.setItem(i, j, item)
         cursor.close()
+
+    def SendToService(self):
+        vin = self.lineEdit_vin_find.text()
+        cursor = conn.cursor()
+        cursor.execute(""" UPDATE bus SET service = true WHERE vin = %s; """,
+                       (vin, ))
+        conn.commit()
+        cursor.execute(""" SELECT COUNT(bus_id) FROM bus; """)
+        self.label_8.setText("Всего автобусов в парке: " + str(cursor.fetchall()[0][0]))
+        cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> true; """)
+        self.label_9.setText("Исправных: " + str(cursor.fetchall()[0][0]))
+        cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> false; """)
+        self.label_10.setText("В ремонте: " + str(cursor.fetchall()[0][0]))
+        cursor.close()
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

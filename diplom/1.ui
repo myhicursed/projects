@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2952</width>
-    <height>1547</height>
+    <width>1010</width>
+    <height>801</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -260,7 +260,7 @@ QPushButton:pressed {
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>161</width>
+       <width>211</width>
        <height>41</height>
       </rect>
      </property>
@@ -274,13 +274,13 @@ QPushButton:pressed {
     font-size: 24px;</string>
      </property>
      <property name="text">
-      <string>Bus Manager 1.0</string>
+      <string>Автобусный парк</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>240</x>
        <y>20</y>
        <width>161</width>
        <height>41</height>
@@ -302,7 +302,7 @@ QPushButton:pressed {
     <widget class="Line" name="line_3">
      <property name="geometry">
       <rect>
-       <x>161</x>
+       <x>210</x>
        <y>10</y>
        <width>31</width>
        <height>61</height>
@@ -313,28 +313,6 @@ QPushButton:pressed {
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>740</x>
-       <y>40</y>
-       <width>111</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(246, 242, 235);
-    font-size: 24px;</string>
-     </property>
-     <property name="text">
-      <string>message: 0</string>
      </property>
     </widget>
     <widget class="Line" name="line_4">
@@ -350,32 +328,10 @@ QPushButton:pressed {
       <enum>Qt::Vertical</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>880</x>
-       <y>40</y>
-       <width>111</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(246, 242, 235);
-    font-size: 24px;</string>
-     </property>
-     <property name="text">
-      <string>help</string>
-     </property>
-    </widget>
     <widget class="Line" name="line_5">
      <property name="geometry">
       <rect>
-       <x>370</x>
+       <x>450</x>
        <y>10</y>
        <width>31</width>
        <height>61</height>
@@ -431,10 +387,10 @@ QPushButton:pressed {
     </property>
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>810</y>
-      <width>911</width>
-      <height>701</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1011</width>
+      <height>801</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -971,8 +927,8 @@ QPushButton:pressed {
    <widget class="QWidget" name="widtegBus" native="true">
     <property name="geometry">
      <rect>
-      <x>1030</x>
-      <y>30</y>
+      <x>130</x>
+      <y>80</y>
       <width>871</width>
       <height>711</height>
      </rect>
@@ -1001,7 +957,7 @@ QPushButton:pressed {
       <rect>
        <x>20</x>
        <y>60</y>
-       <width>121</width>
+       <width>251</width>
        <height>31</height>
       </rect>
      </property>
@@ -1020,7 +976,7 @@ QPushButton:pressed {
       <rect>
        <x>20</x>
        <y>100</y>
-       <width>121</width>
+       <width>251</width>
        <height>31</height>
       </rect>
      </property>
@@ -1060,263 +1016,10 @@ QPushButton:pressed {
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>200</y>
-       <width>121</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: rgb(60, 70, 73);
-    color: rgb(220, 220, 220);
-    border: 1px solid rgb(68, 89, 90);
-    border-radius: 3px;
-    padding: 8px 12px;
-    margin: 4px 8px;
-    font-size: 14px;
-    text-align: left;
-}
-
-QPushButton:hover {
-    background-color: rgb(68, 89, 90);
-    color: rgb(246, 242, 235);
-}
-
-QPushButton:pressed {
-    background-color: rgb(52, 72, 74);
-    border: 1px solid rgb(50, 65, 66);
-}
-
-</string>
-     </property>
-     <property name="text">
-      <string>Подробнее</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_11">
-     <property name="geometry">
-      <rect>
-       <x>440</x>
-       <y>10</y>
-       <width>261</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sitka Small</family>
-       <pointsize>12</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Добавить новый автобус</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_state_number">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>60</y>
-       <width>221</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_vin">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>100</y>
-       <width>221</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_bus_model">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>140</y>
-       <width>221</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_12">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>50</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sitka Small</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Гос.номер</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_13">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>90</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sitka Small</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>VIN</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_14">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>130</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sitka Small</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Модель</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_15">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>170</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sitka Small</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Год выпуска</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>210</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sitka Small</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Пробег</string>
-     </property>
-    </widget>
-    <widget class="Line" name="line_9">
-     <property name="geometry">
-      <rect>
-       <x>410</x>
-       <y>0</y>
-       <width>20</width>
-       <height>261</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_bus_year">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>180</y>
-       <width>221</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_odometer">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>220</y>
-       <width>221</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_6">
-     <property name="geometry">
-      <rect>
-       <x>740</x>
-       <y>210</y>
-       <width>121</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: rgb(60, 70, 73);
-    color: rgb(220, 220, 220);
-    border: 1px solid rgb(68, 89, 90);
-    border-radius: 3px;
-    padding: 8px 12px;
-    margin: 4px 8px;
-    font-size: 14px;
-    text-align: left;
-}
-
-QPushButton:hover {
-    background-color: rgb(68, 89, 90);
-    color: rgb(246, 242, 235);
-}
-
-QPushButton:pressed {
-    background-color: rgb(52, 72, 74);
-    border: 1px solid rgb(50, 65, 66);
-}
-
-</string>
-     </property>
-     <property name="text">
-      <string>Создать</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_17">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>110</x>
        <y>270</y>
        <width>121</width>
        <height>31</height>
@@ -1337,7 +1040,7 @@ QPushButton:pressed {
     <widget class="QLabel" name="label_18">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>300</y>
        <width>91</width>
        <height>51</height>
@@ -1356,7 +1059,7 @@ QPushButton:pressed {
     <widget class="QLineEdit" name="lineEdit_vin_find">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>80</x>
        <y>320</y>
        <width>181</width>
        <height>20</height>
@@ -1366,9 +1069,9 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButton_7">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>360</y>
-       <width>121</width>
+       <x>100</x>
+       <y>350</y>
+       <width>141</width>
        <height>41</height>
       </rect>
      </property>
@@ -1400,38 +1103,25 @@ QPushButton:pressed {
       <string>Найти</string>
      </property>
     </widget>
-    <widget class="Line" name="line_10">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>410</y>
-       <width>871</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
     <widget class="QTableWidget" name="tableWidget">
      <property name="geometry">
       <rect>
-       <x>285</x>
-       <y>271</y>
+       <x>280</x>
+       <y>300</y>
        <width>581</width>
-       <height>141</height>
+       <height>401</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(220, 220, 220);</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_8">
+    <widget class="QPushButton" name="pushButton_15">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>440</y>
-       <width>161</width>
+       <x>100</x>
+       <y>400</y>
+       <width>141</width>
        <height>41</height>
       </rect>
      </property>
@@ -1460,51 +1150,35 @@ QPushButton:pressed {
 </string>
      </property>
      <property name="text">
-      <string>Отправить на ТО</string>
+      <string>Показать все</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QLabel" name="label_33">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>490</y>
-       <width>161</width>
-       <height>41</height>
+       <x>360</x>
+       <y>260</y>
+       <width>441</width>
+       <height>31</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: rgb(60, 70, 73);
-    color: rgb(220, 220, 220);
-    border: 1px solid rgb(68, 89, 90);
-    border-radius: 3px;
-    padding: 8px 12px;
-    margin: 4px 8px;
-    font-size: 14px;
-    text-align: left;
-}
-
-QPushButton:hover {
-    background-color: rgb(68, 89, 90);
-    color: rgb(246, 242, 235);
-}
-
-QPushButton:pressed {
-    background-color: rgb(52, 72, 74);
-    border: 1px solid rgb(50, 65, 66);
-}
-
-</string>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
-      <string>Списать</string>
+      <string>Автобусы зарегистрированные в базе автопарка</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_10">
      <property name="geometry">
       <rect>
-       <x>470</x>
-       <y>440</y>
+       <x>60</x>
+       <y>660</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -1537,30 +1211,94 @@ QPushButton:pressed {
       <string>Исторя обслуживания</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>610</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(60, 70, 73);
+    color: rgb(220, 220, 220);
+    border: 1px solid rgb(68, 89, 90);
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin: 4px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+QPushButton:hover {
+    background-color: rgb(68, 89, 90);
+    color: rgb(246, 242, 235);
+}
+
+QPushButton:pressed {
+    background-color: rgb(52, 72, 74);
+    border: 1px solid rgb(50, 65, 66);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Отправить на ТО</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(60, 70, 73);
+    color: rgb(220, 220, 220);
+    border: 1px solid rgb(68, 89, 90);
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin: 4px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+QPushButton:hover {
+    background-color: rgb(68, 89, 90);
+    color: rgb(246, 242, 235);
+}
+
+QPushButton:pressed {
+    background-color: rgb(52, 72, 74);
+    border: 1px solid rgb(50, 65, 66);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Добавить автобус</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget_5" native="true">
     <property name="geometry">
      <rect>
-      <x>1810</x>
-      <y>810</y>
-      <width>851</width>
-      <height>651</height>
+      <x>130</x>
+      <y>80</y>
+      <width>871</width>
+      <height>721</height>
      </rect>
     </property>
     <widget class="QWidget" name="widget_6" native="true">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>200</y>
-       <width>251</width>
-       <height>221</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="widget_7" native="true">
-     <property name="geometry">
-      <rect>
-       <x>480</x>
        <y>200</y>
        <width>251</width>
        <height>221</height>
@@ -1592,10 +1330,10 @@ QPushButton:pressed {
    <widget class="QWidget" name="widget_4" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>810</y>
+      <x>130</x>
+      <y>80</y>
       <width>871</width>
-      <height>721</height>
+      <height>711</height>
      </rect>
     </property>
     <widget class="QLabel" name="label_27">
@@ -1667,6 +1405,534 @@ QPushButton:pressed {
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="widget_8" native="true">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>270</y>
+      <width>671</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(44, 54, 57);</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_14">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>190</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(60, 70, 73);
+    color: rgb(220, 220, 220);
+    border: 1px solid rgb(68, 89, 90);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 4px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+QPushButton:hover {
+    background-color: rgb(68, 89, 90);
+    color: rgb(246, 242, 235);
+}
+
+QPushButton:pressed {
+    background-color: rgb(52, 72, 74);
+    border: 1px solid rgb(50, 65, 66);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Создать</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>70</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_29">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>60</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Название маршрута</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>100</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Номер автобуса</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>110</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>140</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Дата и время</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>150</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_32">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>20</y>
+       <width>291</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Запланировать новый рейс</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>0</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(60, 70, 73);
+    color: rgb(220, 220, 220);
+    border: 1px solid rgb(68, 89, 90);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 4px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+QPushButton:hover {
+    background-color: rgb(68, 89, 90);
+    color: rgb(246, 242, 235);
+}
+
+QPushButton:pressed {
+    background-color: rgb(52, 72, 74);
+    border: 1px solid rgb(50, 65, 66);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Х</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_9" native="true">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>230</y>
+      <width>671</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(44, 54, 57);</string>
+    </property>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>10</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Добавить новый автобус</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>270</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(60, 70, 73);
+    color: rgb(220, 220, 220);
+    border: 1px solid rgb(68, 89, 90);
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin: 4px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+QPushButton:hover {
+    background-color: rgb(68, 89, 90);
+    color: rgb(246, 242, 235);
+}
+
+QPushButton:pressed {
+    background-color: rgb(52, 72, 74);
+    border: 1px solid rgb(50, 65, 66);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Создать</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_vin">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>100</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_bus_model">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>140</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_bus_year">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>180</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_9">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>0</y>
+       <width>20</width>
+       <height>371</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>90</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>VIN</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>210</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Пробег</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_odometer">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>220</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_state_number">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>60</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>130</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Модель</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>50</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Гос.номер</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>170</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sitka Small</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Год выпуска</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_10">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>260</y>
+       <width>211</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>0</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgb(60, 70, 73);
+    color: rgb(220, 220, 220);
+    border: 1px solid rgb(68, 89, 90);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 4px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+QPushButton:hover {
+    background-color: rgb(68, 89, 90);
+    color: rgb(246, 242, 235);
+}
+
+QPushButton:pressed {
+    background-color: rgb(52, 72, 74);
+    border: 1px solid rgb(50, 65, 66);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Х</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>line</zorder>
    <zorder>line_2</zorder>
    <zorder>widget</zorder>
@@ -1676,8 +1942,10 @@ QPushButton:pressed {
    <zorder>widgetRoutes</zorder>
    <zorder>widtegBus</zorder>
    <zorder>widget_5</zorder>
-   <zorder>widget_3</zorder>
    <zorder>widget_4</zorder>
+   <zorder>widget_3</zorder>
+   <zorder>widget_9</zorder>
+   <zorder>widget_8</zorder>
   </widget>
  </widget>
  <resources/>

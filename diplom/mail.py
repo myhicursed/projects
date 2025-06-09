@@ -2,11 +2,12 @@ import sys
 import psycopg2
 import requests
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QMessageBox
 from PyQt5.QtWidgets import QTableWidgetItem
 from design import Ui_MainWindow
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
+from datetime import date
 
 
 
@@ -26,6 +27,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_7.clicked.connect(self.FindBusFromVin)
         self.pushButton_8.clicked.connect(self.SendToService)
         self.pushButton_12.clicked.connect(self.load_static_map)
+        self.pushButton_13.clicked.connect(self.openPlaneWindow)
+        self.pushButton_14.clicked.connect(self.closePlaneWindow)
+        self.pushButton_11.clicked.connect(self.CreateRoute)
+        self.pushButton_14.clicked.connect(self.CreateOrder)
+        self.pushButton_5.clicked.connect(self.OpenCreateBusWindow)
+        self.pushButton_9.clicked.connect(self.CloseRouteCreateWindow)
+        self.pushButton_16.clicked.connect(self.CloseBusCreateWindow)
+        self.pushButton_15.clicked.connect(self.ShowAllBuses)
         #########################################################################
         self.map_scene = QGraphicsScene()
         self.graphicsView.setScene(self.map_scene)  # Используем уже созданный graphicsView
@@ -41,6 +50,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.widgetRoutes.setVisible(False)
         self.widget_5.setVisible(False)
         self.widget_4.setVisible(False)
+        self.widget_8.setVisible(False)
+        self.widget_9.setVisible(False)
+        today = date.today()
+        self.label_5.setText(f"Сегодня: {today.strftime('%d.%m.%Y')}")
         #######################################################
         self.setup_chart()
 
@@ -88,6 +101,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.widtegBus.setVisible(False)
         self.widgetRoutes.setVisible(False)
         self.widget_5.setVisible(False)
+        self.ShowAllOrders()
+    def openPlaneWindow(self):
+        self.widget_8.setVisible(True)
+    def closePlaneWindow(self):
+        self.widget_8.setVisible(False)
+    def OpenCreateBusWindow(self):
+        self.widget_9.setVisible(True)
+    def CloseBusCreateWindow(self):
+        self.widget_9.setVisible(False)
+    def CloseRouteCreateWindow(self):
+        self.widget_8.setVisible(False)
 
     def get_coordinates(self, place_name, api_key):
         geocoder_url = f"https://geocode-maps.yandex.ru/1.x/"
@@ -274,6 +298,75 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.label_10.setText("В ремонте: " + str(cursor.fetchall()[0][0]))
         cursor.close()
 
+    def CreateRoute(self):
+        name = self.lineEdit_7.text()
+        #number = self.lineEdit_8.text()
+        start = self.lineEdit_9.text()
+        end = self.lineEdit_10.text()
+        #distance = self.lineEdit_11.text()
+        route_time = self.lineEdit_12.text()
+        try:
+            number = int(self.lineEdit_8.text())
+            distance = int(self.lineEdit_11.text())
+        except ValueError:
+            QMessageBox.critical(self, "Ошибка", "Номер маршрута и расстояние должны быть числами")
+            return
+        print(f'{type(name)}\n{type(number)}\n{type(start)}\n{type(end)}\n{type(distance)}\n{type(route_time)}')
+        cursor = conn.cursor()
+        cursor.execute(" INSERT INTO route (route_name, route_number, route_start, route_finally, route_distance, route_time) VALUES (%s, %s, %s, %s, %s, %s) ",
+                       (name, number, start, end, distance, route_time))
+
+        conn.commit()
+        cursor.close()
+        QMessageBox.information(self, "Создание маршрута", "Маршрут успешно создан!")
+
+    def CreateOrder(self):
+        name = self.lineEdit.text()
+        bus_number = int(self.lineEdit_2.text())
+        route_time = self.lineEdit_3.text()
+        cursor = conn.cursor()
+        cursor.execute(" SELECT route_start FROM route WHERE route_name = %s ", (name, ))
+        start = cursor.fetchall()[0][0]
+        cursor.execute(" SELECT route_finally FROM route WHERE route_name = %s ", (name, ))
+        final = cursor.fetchall()[0][0]
+        cursor.execute(""" INSERT INTO orders (route_name, bus_number, route_start, route_finally, route_time) 
+                            VALUES (%s, %s, %s, %s, %s) """,
+                       (name, bus_number, start, final, route_time))
+        conn.commit()
+        cursor.close()
+        QMessageBox.information(self, "Создание рейса", "Рейс успешно запланирован!")
+        self.ShowAllOrders()
+
+    def ShowAllOrders(self):
+        cursor = conn.cursor()
+        cursor.execute(""" SELECT route_name AS "Маршрут", bus_number AS "Номер автобуса", route_start AS "Пункт отправки", route_finally AS "Пункт прибытия", route_time AS "Время отправки" FROM orders; """)
+        len_row = cursor.rowcount
+        rows = cursor.fetchall()
+        cols = cursor.description
+        self.tableWidget_2.setColumnCount(len(cols))
+        self.tableWidget_2.setRowCount(len_row)
+        for i in range(len(cols)):
+            self.tableWidget_2.setHorizontalHeaderItem(i, QTableWidgetItem(cols[i][0]))
+        for i in range(len_row):
+            for j in range(len(rows[i])):
+                item = QTableWidgetItem(str(rows[i][j]))
+                self.tableWidget_2.setItem(i, j, item)
+        cursor.close()
+    def ShowAllBuses(self):
+        cursor = conn.cursor()
+        cursor.execute(""" SELECT state_number AS "Гос.Номер", VIN, model as "Модель", year_of_release as "Год", odometer as "Пробег" FROM bus;  """)
+        len_row = cursor.rowcount
+        rows = cursor.fetchall()
+        cols = cursor.description
+        self.tableWidget.setColumnCount(len(cols))
+        self.tableWidget.setRowCount(len_row)
+        for i in range(len(cols)):
+            self.tableWidget.setHorizontalHeaderItem(i, QTableWidgetItem(cols[i][0]))
+        for i in range(len_row):
+            for j in range(len(rows[i])):
+                item = QTableWidgetItem(str(rows[i][j]))
+                self.tableWidget.setItem(i, j, item)
+        cursor.close()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

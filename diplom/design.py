@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(2952, 1547)
+        MainWindow.resize(1010, 801)
         MainWindow.setStyleSheet("background-color: rgb(246, 242, 235);\n"
 "\n"
 "\n"
@@ -162,7 +162,7 @@ class Ui_MainWindow(object):
 "")
         self.widget_2.setObjectName("widget_2")
         self.label = QtWidgets.QLabel(self.widget_2)
-        self.label.setGeometry(QtCore.QRect(10, 20, 161, 41))
+        self.label.setGeometry(QtCore.QRect(10, 20, 211, 41))
         font = QtGui.QFont()
         font.setPointSize(-1)
         self.label.setFont(font)
@@ -170,7 +170,7 @@ class Ui_MainWindow(object):
 "    font-size: 24px;")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widget_2)
-        self.label_2.setGeometry(QtCore.QRect(200, 20, 161, 41))
+        self.label_2.setGeometry(QtCore.QRect(240, 20, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(-1)
         self.label_2.setFont(font)
@@ -178,34 +178,18 @@ class Ui_MainWindow(object):
 "    font-size: 24px;")
         self.label_2.setObjectName("label_2")
         self.line_3 = QtWidgets.QFrame(self.widget_2)
-        self.line_3.setGeometry(QtCore.QRect(161, 10, 31, 61))
+        self.line_3.setGeometry(QtCore.QRect(210, 10, 31, 61))
         self.line_3.setStyleSheet("")
         self.line_3.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
-        self.label_3 = QtWidgets.QLabel(self.widget_2)
-        self.label_3.setGeometry(QtCore.QRect(740, 40, 111, 41))
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("color: rgb(246, 242, 235);\n"
-"    font-size: 24px;")
-        self.label_3.setObjectName("label_3")
         self.line_4 = QtWidgets.QFrame(self.widget_2)
         self.line_4.setGeometry(QtCore.QRect(830, 0, 20, 71))
         self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
-        self.label_4 = QtWidgets.QLabel(self.widget_2)
-        self.label_4.setGeometry(QtCore.QRect(880, 40, 111, 41))
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        self.label_4.setFont(font)
-        self.label_4.setStyleSheet("color: rgb(246, 242, 235);\n"
-"    font-size: 24px;")
-        self.label_4.setObjectName("label_4")
         self.line_5 = QtWidgets.QFrame(self.widget_2)
-        self.line_5.setGeometry(QtCore.QRect(370, 10, 31, 61))
+        self.line_5.setGeometry(QtCore.QRect(450, 10, 31, 61))
         self.line_5.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
@@ -226,7 +210,7 @@ class Ui_MainWindow(object):
         self.line_6.setObjectName("line_6")
         self.widget_3 = QtWidgets.QWidget(self.centralwidget)
         self.widget_3.setEnabled(True)
-        self.widget_3.setGeometry(QtCore.QRect(890, 810, 911, 701))
+        self.widget_3.setGeometry(QtCore.QRect(0, 0, 1011, 801))
         self.widget_3.setStyleSheet("background-color: rgb(44, 54, 57);")
         self.widget_3.setObjectName("widget_3")
         self.lineEditLogin = QtWidgets.QLineEdit(self.widget_3)
@@ -452,7 +436,7 @@ class Ui_MainWindow(object):
         self.lineEdit_17.setGeometry(QtCore.QRect(540, 220, 181, 20))
         self.lineEdit_17.setObjectName("lineEdit_17")
         self.widtegBus = QtWidgets.QWidget(self.centralwidget)
-        self.widtegBus.setGeometry(QtCore.QRect(1030, 30, 871, 711))
+        self.widtegBus.setGeometry(QtCore.QRect(130, 80, 871, 711))
         self.widtegBus.setObjectName("widtegBus")
         self.label_8 = QtWidgets.QLabel(self.widtegBus)
         self.label_8.setGeometry(QtCore.QRect(20, 20, 261, 31))
@@ -462,14 +446,14 @@ class Ui_MainWindow(object):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(self.widtegBus)
-        self.label_9.setGeometry(QtCore.QRect(20, 60, 121, 31))
+        self.label_9.setGeometry(QtCore.QRect(20, 60, 251, 31))
         font = QtGui.QFont()
         font.setFamily("Sitka Small")
         font.setPointSize(12)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.widtegBus)
-        self.label_10.setGeometry(QtCore.QRect(20, 100, 121, 31))
+        self.label_10.setGeometry(QtCore.QRect(20, 100, 251, 31))
         font = QtGui.QFont()
         font.setFamily("Sitka Small")
         font.setPointSize(12)
@@ -485,122 +469,8 @@ class Ui_MainWindow(object):
         self.line_8.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_8.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_8.setObjectName("line_8")
-        self.pushButton_5 = QtWidgets.QPushButton(self.widtegBus)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 200, 121, 41))
-        self.pushButton_5.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 70, 73);\n"
-"    color: rgb(220, 220, 220);\n"
-"    border: 1px solid rgb(68, 89, 90);\n"
-"    border-radius: 3px;\n"
-"    padding: 8px 12px;\n"
-"    margin: 4px 8px;\n"
-"    font-size: 14px;\n"
-"    text-align: left;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(68, 89, 90);\n"
-"    color: rgb(246, 242, 235);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(52, 72, 74);\n"
-"    border: 1px solid rgb(50, 65, 66);\n"
-"}\n"
-"\n"
-"")
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.label_11 = QtWidgets.QLabel(self.widtegBus)
-        self.label_11.setGeometry(QtCore.QRect(440, 10, 261, 31))
-        font = QtGui.QFont()
-        font.setFamily("Sitka Small")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_11.setFont(font)
-        self.label_11.setObjectName("label_11")
-        self.lineEdit_state_number = QtWidgets.QLineEdit(self.widtegBus)
-        self.lineEdit_state_number.setGeometry(QtCore.QRect(430, 60, 221, 20))
-        self.lineEdit_state_number.setObjectName("lineEdit_state_number")
-        self.lineEdit_vin = QtWidgets.QLineEdit(self.widtegBus)
-        self.lineEdit_vin.setGeometry(QtCore.QRect(430, 100, 221, 20))
-        self.lineEdit_vin.setObjectName("lineEdit_vin")
-        self.lineEdit_bus_model = QtWidgets.QLineEdit(self.widtegBus)
-        self.lineEdit_bus_model.setGeometry(QtCore.QRect(430, 140, 221, 20))
-        self.lineEdit_bus_model.setObjectName("lineEdit_bus_model")
-        self.label_12 = QtWidgets.QLabel(self.widtegBus)
-        self.label_12.setGeometry(QtCore.QRect(290, 50, 91, 31))
-        font = QtGui.QFont()
-        font.setFamily("Sitka Small")
-        font.setPointSize(12)
-        self.label_12.setFont(font)
-        self.label_12.setObjectName("label_12")
-        self.label_13 = QtWidgets.QLabel(self.widtegBus)
-        self.label_13.setGeometry(QtCore.QRect(290, 90, 91, 31))
-        font = QtGui.QFont()
-        font.setFamily("Sitka Small")
-        font.setPointSize(12)
-        self.label_13.setFont(font)
-        self.label_13.setObjectName("label_13")
-        self.label_14 = QtWidgets.QLabel(self.widtegBus)
-        self.label_14.setGeometry(QtCore.QRect(290, 130, 91, 31))
-        font = QtGui.QFont()
-        font.setFamily("Sitka Small")
-        font.setPointSize(12)
-        self.label_14.setFont(font)
-        self.label_14.setObjectName("label_14")
-        self.label_15 = QtWidgets.QLabel(self.widtegBus)
-        self.label_15.setGeometry(QtCore.QRect(290, 170, 111, 31))
-        font = QtGui.QFont()
-        font.setFamily("Sitka Small")
-        font.setPointSize(12)
-        self.label_15.setFont(font)
-        self.label_15.setObjectName("label_15")
-        self.label_16 = QtWidgets.QLabel(self.widtegBus)
-        self.label_16.setGeometry(QtCore.QRect(290, 210, 111, 31))
-        font = QtGui.QFont()
-        font.setFamily("Sitka Small")
-        font.setPointSize(12)
-        self.label_16.setFont(font)
-        self.label_16.setObjectName("label_16")
-        self.line_9 = QtWidgets.QFrame(self.widtegBus)
-        self.line_9.setGeometry(QtCore.QRect(410, 0, 20, 261))
-        self.line_9.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_9.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_9.setObjectName("line_9")
-        self.lineEdit_bus_year = QtWidgets.QLineEdit(self.widtegBus)
-        self.lineEdit_bus_year.setGeometry(QtCore.QRect(430, 180, 221, 20))
-        self.lineEdit_bus_year.setObjectName("lineEdit_bus_year")
-        self.lineEdit_odometer = QtWidgets.QLineEdit(self.widtegBus)
-        self.lineEdit_odometer.setGeometry(QtCore.QRect(430, 220, 221, 20))
-        self.lineEdit_odometer.setObjectName("lineEdit_odometer")
-        self.pushButton_6 = QtWidgets.QPushButton(self.widtegBus)
-        self.pushButton_6.setGeometry(QtCore.QRect(740, 210, 121, 41))
-        self.pushButton_6.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 70, 73);\n"
-"    color: rgb(220, 220, 220);\n"
-"    border: 1px solid rgb(68, 89, 90);\n"
-"    border-radius: 3px;\n"
-"    padding: 8px 12px;\n"
-"    margin: 4px 8px;\n"
-"    font-size: 14px;\n"
-"    text-align: left;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(68, 89, 90);\n"
-"    color: rgb(246, 242, 235);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(52, 72, 74);\n"
-"    border: 1px solid rgb(50, 65, 66);\n"
-"}\n"
-"\n"
-"")
-        self.pushButton_6.setObjectName("pushButton_6")
         self.label_17 = QtWidgets.QLabel(self.widtegBus)
-        self.label_17.setGeometry(QtCore.QRect(120, 270, 121, 31))
+        self.label_17.setGeometry(QtCore.QRect(110, 270, 121, 31))
         font = QtGui.QFont()
         font.setFamily("Sitka Small")
         font.setPointSize(12)
@@ -609,17 +479,17 @@ class Ui_MainWindow(object):
         self.label_17.setFont(font)
         self.label_17.setObjectName("label_17")
         self.label_18 = QtWidgets.QLabel(self.widtegBus)
-        self.label_18.setGeometry(QtCore.QRect(10, 300, 91, 51))
+        self.label_18.setGeometry(QtCore.QRect(20, 300, 91, 51))
         font = QtGui.QFont()
         font.setFamily("Sitka Small")
         font.setPointSize(12)
         self.label_18.setFont(font)
         self.label_18.setObjectName("label_18")
         self.lineEdit_vin_find = QtWidgets.QLineEdit(self.widtegBus)
-        self.lineEdit_vin_find.setGeometry(QtCore.QRect(70, 320, 181, 20))
+        self.lineEdit_vin_find.setGeometry(QtCore.QRect(80, 320, 181, 20))
         self.lineEdit_vin_find.setObjectName("lineEdit_vin_find")
         self.pushButton_7 = QtWidgets.QPushButton(self.widtegBus)
-        self.pushButton_7.setGeometry(QtCore.QRect(90, 360, 121, 41))
+        self.pushButton_7.setGeometry(QtCore.QRect(100, 350, 141, 41))
         self.pushButton_7.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(60, 70, 73);\n"
 "    color: rgb(220, 220, 220);\n"
@@ -643,20 +513,15 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.pushButton_7.setObjectName("pushButton_7")
-        self.line_10 = QtWidgets.QFrame(self.widtegBus)
-        self.line_10.setGeometry(QtCore.QRect(0, 410, 871, 20))
-        self.line_10.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_10.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_10.setObjectName("line_10")
         self.tableWidget = QtWidgets.QTableWidget(self.widtegBus)
-        self.tableWidget.setGeometry(QtCore.QRect(285, 271, 581, 141))
+        self.tableWidget.setGeometry(QtCore.QRect(280, 300, 581, 401))
         self.tableWidget.setStyleSheet("background-color: rgb(220, 220, 220);")
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
-        self.pushButton_8 = QtWidgets.QPushButton(self.widtegBus)
-        self.pushButton_8.setGeometry(QtCore.QRect(300, 440, 161, 41))
-        self.pushButton_8.setStyleSheet("QPushButton {\n"
+        self.pushButton_15 = QtWidgets.QPushButton(self.widtegBus)
+        self.pushButton_15.setGeometry(QtCore.QRect(100, 400, 141, 41))
+        self.pushButton_15.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(60, 70, 73);\n"
 "    color: rgb(220, 220, 220);\n"
 "    border: 1px solid rgb(68, 89, 90);\n"
@@ -678,34 +543,18 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.pushButton_9 = QtWidgets.QPushButton(self.widtegBus)
-        self.pushButton_9.setGeometry(QtCore.QRect(300, 490, 161, 41))
-        self.pushButton_9.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 70, 73);\n"
-"    color: rgb(220, 220, 220);\n"
-"    border: 1px solid rgb(68, 89, 90);\n"
-"    border-radius: 3px;\n"
-"    padding: 8px 12px;\n"
-"    margin: 4px 8px;\n"
-"    font-size: 14px;\n"
-"    text-align: left;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(68, 89, 90);\n"
-"    color: rgb(246, 242, 235);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(52, 72, 74);\n"
-"    border: 1px solid rgb(50, 65, 66);\n"
-"}\n"
-"\n"
-"")
-        self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButton_15.setObjectName("pushButton_15")
+        self.label_33 = QtWidgets.QLabel(self.widtegBus)
+        self.label_33.setGeometry(QtCore.QRect(360, 260, 441, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_33.setFont(font)
+        self.label_33.setObjectName("label_33")
         self.pushButton_10 = QtWidgets.QPushButton(self.widtegBus)
-        self.pushButton_10.setGeometry(QtCore.QRect(470, 440, 211, 41))
+        self.pushButton_10.setGeometry(QtCore.QRect(60, 660, 211, 41))
         self.pushButton_10.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(60, 70, 73);\n"
 "    color: rgb(220, 220, 220);\n"
@@ -729,15 +578,62 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.pushButton_10.setObjectName("pushButton_10")
+        self.pushButton_8 = QtWidgets.QPushButton(self.widtegBus)
+        self.pushButton_8.setGeometry(QtCore.QRect(60, 610, 211, 41))
+        self.pushButton_8.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 70, 73);\n"
+"    color: rgb(220, 220, 220);\n"
+"    border: 1px solid rgb(68, 89, 90);\n"
+"    border-radius: 3px;\n"
+"    padding: 8px 12px;\n"
+"    margin: 4px 8px;\n"
+"    font-size: 14px;\n"
+"    text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(68, 89, 90);\n"
+"    color: rgb(246, 242, 235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(52, 72, 74);\n"
+"    border: 1px solid rgb(50, 65, 66);\n"
+"}\n"
+"\n"
+"")
+        self.pushButton_8.setObjectName("pushButton_8")
+        self.pushButton_5 = QtWidgets.QPushButton(self.widtegBus)
+        self.pushButton_5.setGeometry(QtCore.QRect(10, 200, 181, 41))
+        self.pushButton_5.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 70, 73);\n"
+"    color: rgb(220, 220, 220);\n"
+"    border: 1px solid rgb(68, 89, 90);\n"
+"    border-radius: 3px;\n"
+"    padding: 8px 12px;\n"
+"    margin: 4px 8px;\n"
+"    font-size: 14px;\n"
+"    text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(68, 89, 90);\n"
+"    color: rgb(246, 242, 235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(52, 72, 74);\n"
+"    border: 1px solid rgb(50, 65, 66);\n"
+"}\n"
+"\n"
+"")
+        self.pushButton_5.setObjectName("pushButton_5")
         self.widget_5 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_5.setGeometry(QtCore.QRect(1810, 810, 851, 651))
+        self.widget_5.setGeometry(QtCore.QRect(130, 80, 871, 721))
         self.widget_5.setObjectName("widget_5")
         self.widget_6 = QtWidgets.QWidget(self.widget_5)
         self.widget_6.setGeometry(QtCore.QRect(30, 200, 251, 221))
         self.widget_6.setObjectName("widget_6")
-        self.widget_7 = QtWidgets.QWidget(self.widget_5)
-        self.widget_7.setGeometry(QtCore.QRect(480, 200, 251, 221))
-        self.widget_7.setObjectName("widget_7")
         self.label_28 = QtWidgets.QLabel(self.widget_5)
         self.label_28.setGeometry(QtCore.QRect(350, 20, 181, 31))
         font = QtGui.QFont()
@@ -748,7 +644,7 @@ class Ui_MainWindow(object):
         self.label_28.setFont(font)
         self.label_28.setObjectName("label_28")
         self.widget_4 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_4.setGeometry(QtCore.QRect(10, 810, 871, 721))
+        self.widget_4.setGeometry(QtCore.QRect(130, 80, 871, 711))
         self.widget_4.setObjectName("widget_4")
         self.label_27 = QtWidgets.QLabel(self.widget_4)
         self.label_27.setGeometry(QtCore.QRect(330, 20, 181, 31))
@@ -789,6 +685,240 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.pushButton_13.setObjectName("pushButton_13")
+        self.widget_8 = QtWidgets.QWidget(self.centralwidget)
+        self.widget_8.setGeometry(QtCore.QRect(230, 270, 671, 251))
+        self.widget_8.setStyleSheet("background-color: rgb(44, 54, 57);")
+        self.widget_8.setObjectName("widget_8")
+        self.pushButton_14 = QtWidgets.QPushButton(self.widget_8)
+        self.pushButton_14.setGeometry(QtCore.QRect(290, 190, 131, 41))
+        self.pushButton_14.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 70, 73);\n"
+"    color: rgb(220, 220, 220);\n"
+"    border: 1px solid rgb(68, 89, 90);\n"
+"    border-radius: 6px;\n"
+"    padding: 8px 12px;\n"
+"    margin: 4px 8px;\n"
+"    font-size: 14px;\n"
+"    text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(68, 89, 90);\n"
+"    color: rgb(246, 242, 235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(52, 72, 74);\n"
+"    border: 1px solid rgb(50, 65, 66);\n"
+"}\n"
+"\n"
+"")
+        self.pushButton_14.setObjectName("pushButton_14")
+        self.lineEdit = QtWidgets.QLineEdit(self.widget_8)
+        self.lineEdit.setGeometry(QtCore.QRect(260, 70, 181, 20))
+        self.lineEdit.setStyleSheet("background-color: rgb(255, 255, 255);color: rgb(255, 255, 255);")
+        self.lineEdit.setObjectName("lineEdit")
+        self.label_29 = QtWidgets.QLabel(self.widget_8)
+        self.label_29.setGeometry(QtCore.QRect(60, 60, 181, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_29.setFont(font)
+        self.label_29.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_29.setObjectName("label_29")
+        self.label_30 = QtWidgets.QLabel(self.widget_8)
+        self.label_30.setGeometry(QtCore.QRect(60, 100, 171, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_30.setFont(font)
+        self.label_30.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_30.setObjectName("label_30")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.widget_8)
+        self.lineEdit_2.setGeometry(QtCore.QRect(260, 110, 181, 20))
+        self.lineEdit_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.label_31 = QtWidgets.QLabel(self.widget_8)
+        self.label_31.setGeometry(QtCore.QRect(60, 140, 171, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_31.setFont(font)
+        self.label_31.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_31.setObjectName("label_31")
+        self.lineEdit_3 = QtWidgets.QLineEdit(self.widget_8)
+        self.lineEdit_3.setGeometry(QtCore.QRect(260, 150, 181, 20))
+        self.lineEdit_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.label_32 = QtWidgets.QLabel(self.widget_8)
+        self.label_32.setGeometry(QtCore.QRect(230, 20, 291, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_32.setFont(font)
+        self.label_32.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_32.setObjectName("label_32")
+        self.pushButton_9 = QtWidgets.QPushButton(self.widget_8)
+        self.pushButton_9.setGeometry(QtCore.QRect(620, 0, 51, 41))
+        self.pushButton_9.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 70, 73);\n"
+"    color: rgb(220, 220, 220);\n"
+"    border: 1px solid rgb(68, 89, 90);\n"
+"    border-radius: 6px;\n"
+"    padding: 8px 12px;\n"
+"    margin: 4px 8px;\n"
+"    font-size: 14px;\n"
+"    text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(68, 89, 90);\n"
+"    color: rgb(246, 242, 235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(52, 72, 74);\n"
+"    border: 1px solid rgb(50, 65, 66);\n"
+"}\n"
+"\n"
+"")
+        self.pushButton_9.setObjectName("pushButton_9")
+        self.widget_9 = QtWidgets.QWidget(self.centralwidget)
+        self.widget_9.setGeometry(QtCore.QRect(230, 230, 671, 331))
+        self.widget_9.setStyleSheet("background-color: rgb(44, 54, 57);")
+        self.widget_9.setObjectName("widget_9")
+        self.label_11 = QtWidgets.QLabel(self.widget_9)
+        self.label_11.setGeometry(QtCore.QRect(230, 10, 261, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_11.setObjectName("label_11")
+        self.pushButton_6 = QtWidgets.QPushButton(self.widget_9)
+        self.pushButton_6.setGeometry(QtCore.QRect(250, 270, 171, 41))
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 70, 73);\n"
+"    color: rgb(220, 220, 220);\n"
+"    border: 1px solid rgb(68, 89, 90);\n"
+"    border-radius: 3px;\n"
+"    padding: 8px 12px;\n"
+"    margin: 4px 8px;\n"
+"    font-size: 14px;\n"
+"    text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(68, 89, 90);\n"
+"    color: rgb(246, 242, 235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(52, 72, 74);\n"
+"    border: 1px solid rgb(50, 65, 66);\n"
+"}\n"
+"\n"
+"")
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.lineEdit_vin = QtWidgets.QLineEdit(self.widget_9)
+        self.lineEdit_vin.setGeometry(QtCore.QRect(230, 100, 221, 20))
+        self.lineEdit_vin.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_vin.setObjectName("lineEdit_vin")
+        self.lineEdit_bus_model = QtWidgets.QLineEdit(self.widget_9)
+        self.lineEdit_bus_model.setGeometry(QtCore.QRect(230, 140, 221, 20))
+        self.lineEdit_bus_model.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_bus_model.setObjectName("lineEdit_bus_model")
+        self.lineEdit_bus_year = QtWidgets.QLineEdit(self.widget_9)
+        self.lineEdit_bus_year.setGeometry(QtCore.QRect(230, 180, 221, 20))
+        self.lineEdit_bus_year.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_bus_year.setObjectName("lineEdit_bus_year")
+        self.line_9 = QtWidgets.QFrame(self.widget_9)
+        self.line_9.setGeometry(QtCore.QRect(210, 0, 20, 371))
+        self.line_9.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_9.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_9.setObjectName("line_9")
+        self.label_13 = QtWidgets.QLabel(self.widget_9)
+        self.label_13.setGeometry(QtCore.QRect(90, 90, 91, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_13.setFont(font)
+        self.label_13.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_13.setObjectName("label_13")
+        self.label_16 = QtWidgets.QLabel(self.widget_9)
+        self.label_16.setGeometry(QtCore.QRect(90, 210, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_16.setFont(font)
+        self.label_16.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_16.setObjectName("label_16")
+        self.lineEdit_odometer = QtWidgets.QLineEdit(self.widget_9)
+        self.lineEdit_odometer.setGeometry(QtCore.QRect(230, 220, 221, 20))
+        self.lineEdit_odometer.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_odometer.setObjectName("lineEdit_odometer")
+        self.lineEdit_state_number = QtWidgets.QLineEdit(self.widget_9)
+        self.lineEdit_state_number.setGeometry(QtCore.QRect(230, 60, 221, 20))
+        self.lineEdit_state_number.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_state_number.setObjectName("lineEdit_state_number")
+        self.label_14 = QtWidgets.QLabel(self.widget_9)
+        self.label_14.setGeometry(QtCore.QRect(90, 130, 91, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_14.setFont(font)
+        self.label_14.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_14.setObjectName("label_14")
+        self.label_12 = QtWidgets.QLabel(self.widget_9)
+        self.label_12.setGeometry(QtCore.QRect(90, 50, 91, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_12.setFont(font)
+        self.label_12.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_12.setObjectName("label_12")
+        self.label_15 = QtWidgets.QLabel(self.widget_9)
+        self.label_15.setGeometry(QtCore.QRect(90, 170, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("Sitka Small")
+        font.setPointSize(12)
+        self.label_15.setFont(font)
+        self.label_15.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_15.setObjectName("label_15")
+        self.line_10 = QtWidgets.QFrame(self.widget_9)
+        self.line_10.setGeometry(QtCore.QRect(0, 260, 211, 20))
+        self.line_10.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_10.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_10.setObjectName("line_10")
+        self.pushButton_16 = QtWidgets.QPushButton(self.widget_9)
+        self.pushButton_16.setGeometry(QtCore.QRect(620, 0, 51, 41))
+        self.pushButton_16.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 70, 73);\n"
+"    color: rgb(220, 220, 220);\n"
+"    border: 1px solid rgb(68, 89, 90);\n"
+"    border-radius: 6px;\n"
+"    padding: 8px 12px;\n"
+"    margin: 4px 8px;\n"
+"    font-size: 14px;\n"
+"    text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(68, 89, 90);\n"
+"    color: rgb(246, 242, 235);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(52, 72, 74);\n"
+"    border: 1px solid rgb(50, 65, 66);\n"
+"}\n"
+"\n"
+"")
+        self.pushButton_16.setObjectName("pushButton_16")
         self.line.raise_()
         self.line_2.raise_()
         self.widget.raise_()
@@ -798,8 +928,10 @@ class Ui_MainWindow(object):
         self.widgetRoutes.raise_()
         self.widtegBus.raise_()
         self.widget_5.raise_()
-        self.widget_3.raise_()
         self.widget_4.raise_()
+        self.widget_3.raise_()
+        self.widget_9.raise_()
+        self.widget_8.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -813,10 +945,8 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "Расписание"))
         self.pushButton_4.setText(_translate("MainWindow", "Аналитика"))
         self.pushButtonMain.setText(_translate("MainWindow", "Главная"))
-        self.label.setText(_translate("MainWindow", "Bus Manager 1.0"))
+        self.label.setText(_translate("MainWindow", "Автобусный парк"))
         self.label_2.setText(_translate("MainWindow", "Welcome, user user"))
-        self.label_3.setText(_translate("MainWindow", "message: 0"))
-        self.label_4.setText(_translate("MainWindow", "help"))
         self.label_5.setText(_translate("MainWindow", "Сегодня 28.05.2025"))
         self.pushButtonAuthorization.setText(_translate("MainWindow", "Войти"))
         self.label_6.setText(_translate("MainWindow", "Логин"))
@@ -834,23 +964,31 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "Всего автобусов в парке: "))
         self.label_9.setText(_translate("MainWindow", "Исправных: "))
         self.label_10.setText(_translate("MainWindow", "В ремонте:"))
-        self.pushButton_5.setText(_translate("MainWindow", "Подробнее"))
-        self.label_11.setText(_translate("MainWindow", "Добавить новый автобус"))
-        self.label_12.setText(_translate("MainWindow", "Гос.номер"))
-        self.label_13.setText(_translate("MainWindow", "VIN"))
-        self.label_14.setText(_translate("MainWindow", "Модель"))
-        self.label_15.setText(_translate("MainWindow", "Год выпуска"))
-        self.label_16.setText(_translate("MainWindow", "Пробег"))
-        self.pushButton_6.setText(_translate("MainWindow", "Создать"))
         self.label_17.setText(_translate("MainWindow", "Поиск"))
         self.label_18.setText(_translate("MainWindow", "VIN"))
         self.pushButton_7.setText(_translate("MainWindow", "Найти"))
-        self.pushButton_8.setText(_translate("MainWindow", "Отправить на ТО"))
-        self.pushButton_9.setText(_translate("MainWindow", "Списать"))
+        self.pushButton_15.setText(_translate("MainWindow", "Показать все"))
+        self.label_33.setText(_translate("MainWindow", "Автобусы зарегистрированные в базе автопарка"))
         self.pushButton_10.setText(_translate("MainWindow", "Исторя обслуживания"))
+        self.pushButton_8.setText(_translate("MainWindow", "Отправить на ТО"))
+        self.pushButton_5.setText(_translate("MainWindow", "Добавить автобус"))
         self.label_28.setText(_translate("MainWindow", "Аналитика"))
         self.label_27.setText(_translate("MainWindow", "Текущие рейсы"))
         self.pushButton_13.setText(_translate("MainWindow", "Запланировать"))
+        self.pushButton_14.setText(_translate("MainWindow", "Создать"))
+        self.label_29.setText(_translate("MainWindow", "Название маршрута"))
+        self.label_30.setText(_translate("MainWindow", "Номер автобуса"))
+        self.label_31.setText(_translate("MainWindow", "Дата и время"))
+        self.label_32.setText(_translate("MainWindow", "Запланировать новый рейс"))
+        self.pushButton_9.setText(_translate("MainWindow", "Х"))
+        self.label_11.setText(_translate("MainWindow", "Добавить новый автобус"))
+        self.pushButton_6.setText(_translate("MainWindow", "Создать"))
+        self.label_13.setText(_translate("MainWindow", "VIN"))
+        self.label_16.setText(_translate("MainWindow", "Пробег"))
+        self.label_14.setText(_translate("MainWindow", "Модель"))
+        self.label_12.setText(_translate("MainWindow", "Гос.номер"))
+        self.label_15.setText(_translate("MainWindow", "Год выпуска"))
+        self.pushButton_16.setText(_translate("MainWindow", "Х"))
 
 
 if __name__ == "__main__":

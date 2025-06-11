@@ -7,7 +7,10 @@ from PyQt5.QtWidgets import QTableWidgetItem
 from design import Ui_MainWindow
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
-from datetime import date
+from datetime import datetime
+from bot import BusBot
+import threading
+
 
 
 
@@ -15,6 +18,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+
+        self.bot = BusBot()
         #########################################################################
         #СИГНАЛЫ
         self.pushButtonAuthorization.clicked.connect(self.authorizationForUser)
@@ -35,7 +41,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_9.clicked.connect(self.CloseRouteCreateWindow)
         self.pushButton_16.clicked.connect(self.CloseBusCreateWindow)
         self.pushButton_15.clicked.connect(self.ShowAllBuses)
+
+        self.bot.message_signal.connect(self.update_label_from_bot)
+        self.bot.message_route_name_signal.connect(self.update_route_from_bot)
+        self.bot.message_end_route_signal.connect(self.endRoute)
         #########################################################################
+        threading.Thread(target=self.bot.run, daemon=True).start()
+
         self.map_scene = QGraphicsScene()
         self.graphicsView.setScene(self.map_scene)  # Используем уже созданный graphicsView
 
@@ -46,16 +58,44 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         ########################################################
         #БАЗОВЫЕ НАСТРОЙКИ ОТОБРАЖЕНИЯ
+        self.tableWidget_3.setColumnCount(4)
+        self.tableWidget_3.setHorizontalHeaderLabels(["Имя", "Гос.номер", "Время", "Ситуация"])
         self.widtegBus.setVisible(False)
         self.widgetRoutes.setVisible(False)
         self.widget_5.setVisible(False)
         self.widget_4.setVisible(False)
         self.widget_8.setVisible(False)
         self.widget_9.setVisible(False)
-        today = date.today()
+        self.pushButton_8.setVisible(False)
+        today = datetime.today()
         self.label_5.setText(f"Сегодня: {today.strftime('%d.%m.%Y')}")
         #######################################################
         self.setup_chart()
+
+    def endRoute(self, number):
+        row_position = self.tableWidget_3.rowCount()
+        self.tableWidget_3.insertRow(row_position)
+        time_str = datetime.now().strftime("%H:%M:%S")
+        self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(number))
+        self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
+        self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("Завершил смену"))
+
+    def update_route_from_bot(self, name, number):
+        row_position = self.tableWidget_3.rowCount()
+        self.tableWidget_3.insertRow(row_position)
+        time_str = datetime.now().strftime("%H:%M:%S")
+        self.tableWidget_3.setItem(row_position, 0, QTableWidgetItem(name))
+        self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(number))
+        self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
+        self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("Начал смену"))
+
+    def update_label_from_bot(self, text):
+        row_position = self.tableWidget_3.rowCount()
+        self.tableWidget_3.insertRow(row_position)
+        time_str = datetime.now().strftime("%H:%M:%S")
+        self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(text))
+        self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
+        self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("ДТП"))
 
     def setup_chart(self):
         """Альтернативный вариант без проверки layout"""
@@ -261,11 +301,21 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         model = self.lineEdit_bus_model.text()
         year = self.lineEdit_bus_year.text()
         odometer = self.lineEdit_odometer.text()
+        odometer = int(odometer)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO bus (state_number, VIN, model, year_of_release, odometer) VALUES (%s, %s, %s, %s, %s)",
                        (number, vin, model, year, odometer))
         conn.commit()
+        cursor.execute(""" SELECT COUNT(bus_id) FROM bus; """)
+        self.label_8.setText("Всего автобусов в парке: " + str(cursor.fetchall()[0][0]))
+        cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> true; """)
+        self.label_9.setText("Исправных: " + str(cursor.fetchall()[0][0]))
+        cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> false; """)
+        self.label_10.setText("В ремонте: " + str(cursor.fetchall()[0][0]))
         cursor.close()
+        self.widget_9.setVisible(False)
+        QMessageBox.information(self, "Регистрация автобуса", "Автобус успешно зарегистрирован в базе")
+
     def FindBusFromVin(self):
         vin = self.lineEdit_vin_find.text()
         cursor = conn.cursor()
@@ -283,6 +333,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 item = QTableWidgetItem(str(rows[i][j]))
                 self.tableWidget.setItem(i, j, item)
         cursor.close()
+        self.pushButton_8.setVisible(True)
 
     def SendToService(self):
         vin = self.lineEdit_vin_find.text()
@@ -297,6 +348,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> false; """)
         self.label_10.setText("В ремонте: " + str(cursor.fetchall()[0][0]))
         cursor.close()
+        QMessageBox.information(self, "Подтверждение отправки", "Автобус отправлен на ТО")
 
     def CreateRoute(self):
         name = self.lineEdit_7.text()
@@ -367,6 +419,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 item = QTableWidgetItem(str(rows[i][j]))
                 self.tableWidget.setItem(i, j, item)
         cursor.close()
+    
+    
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

@@ -1,6 +1,7 @@
 import sys
 import psycopg2
 import requests
+from PyQt5.QtCore import pyqtSignal
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QMessageBox
 from PyQt5.QtWidgets import QTableWidgetItem
@@ -10,11 +11,14 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from bot import BusBot
 import threading
+from collections import Counter
+#import datetime
 
 
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+    send_tg_id_signal = pyqtSignal(str, str)
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -41,10 +45,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_9.clicked.connect(self.CloseRouteCreateWindow)
         self.pushButton_16.clicked.connect(self.CloseBusCreateWindow)
         self.pushButton_15.clicked.connect(self.ShowAllBuses)
+        self.pushButton_10.clicked.connect(self.SendSelectedId)
 
         self.bot.message_signal.connect(self.update_label_from_bot)
         self.bot.message_route_name_signal.connect(self.update_route_from_bot)
         self.bot.message_end_route_signal.connect(self.endRoute)
+        self.bot.message_check_repair_signal.connect(self.SendMessageRepair)
+
+        self.send_tg_id_signal.connect(self.bot.Accept)
+
         #########################################################################
         threading.Thread(target=self.bot.run, daemon=True).start()
 
@@ -70,51 +79,176 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         today = datetime.today()
         self.label_5.setText(f"Сегодня: {today.strftime('%d.%m.%Y')}")
         #######################################################
-        self.setup_chart()
 
-    def endRoute(self, number):
+    def LoadDriversToComboBox(self):
+        cursor = conn.cursor()
+        cursor.execute(" SELECT drivers_fio, telegram_id FROM drivers ")
+        rows = cursor.fetchall()
+        self.comboBox.clear()
+
+        for fio, tg_id in rows:
+            self.comboBox.addItem(fio, tg_id)
+
+    def GetSelectedTgId(self, comboBox):
+        index = comboBox.currentIndex()
+        if index >= 0:
+            return comboBox.itemData(index)
+        return None
+
+    def SendSelectedId(self):
+        tg_id = self.GetSelectedTgId(self.comboBox)
+        msg = self.lineEdit_4.text()
+        if tg_id:
+            print(f'Отправляется tg_id: {tg_id}')
+        self.send_tg_id_signal.emit(tg_id, msg)
+
+
+
+    def SendMessageRepair(self, tgid, number):
         row_position = self.tableWidget_3.rowCount()
         self.tableWidget_3.insertRow(row_position)
         time_str = datetime.now().strftime("%H:%M:%S")
+        cursor = conn.cursor()
+        cursor.execute(" SELECT drivers_fio FROM drivers WHERE telegram_id = %s ", (str(tgid),))
+        mn = cursor.fetchall()[0][0]
+        self.tableWidget_3.setItem(row_position, 0, QTableWidgetItem(mn))
+        self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(number))
+        self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
+        self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("Поломка"))
+        cursor.close()
+
+    def endRoute(self, tgid, number):
+        row_position = self.tableWidget_3.rowCount()
+        self.tableWidget_3.insertRow(row_position)
+        time_str = datetime.now().strftime("%H:%M:%S")
+        cursor = conn.cursor()
+        cursor.execute(" SELECT drivers_fio FROM drivers WHERE telegram_id = %s ", (str(tgid),))
+        mn = cursor.fetchall()[0][0]
+        self.tableWidget_3.setItem(row_position, 0, QTableWidgetItem(mn))
         self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(number))
         self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
         self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("Завершил смену"))
+        cursor.close()
 
-    def update_route_from_bot(self, name, number):
+    def update_route_from_bot(self, tgid, number):
         row_position = self.tableWidget_3.rowCount()
         self.tableWidget_3.insertRow(row_position)
         time_str = datetime.now().strftime("%H:%M:%S")
-        self.tableWidget_3.setItem(row_position, 0, QTableWidgetItem(name))
+        cursor = conn.cursor()
+        cursor.execute(" SELECT drivers_fio FROM drivers WHERE telegram_id = %s ", (str(tgid),))
+        mn = cursor.fetchall()[0][0]
+        self.tableWidget_3.setItem(row_position, 0, QTableWidgetItem(mn))
         self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(number))
         self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
         self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("Начал смену"))
+        cursor.close()
 
-    def update_label_from_bot(self, text):
+    def update_label_from_bot(self, tgid, text):
         row_position = self.tableWidget_3.rowCount()
         self.tableWidget_3.insertRow(row_position)
         time_str = datetime.now().strftime("%H:%M:%S")
+        cursor = conn.cursor()
+        cursor.execute(" SELECT drivers_fio FROM drivers WHERE telegram_id = %s ", (str(tgid),))
+        mn = cursor.fetchall()[0][0]
+        self.tableWidget_3.setItem(row_position, 0, QTableWidgetItem(mn))
         self.tableWidget_3.setItem(row_position, 1, QTableWidgetItem(text))
         self.tableWidget_3.setItem(row_position, 2, QTableWidgetItem(time_str))
         self.tableWidget_3.setItem(row_position, 3, QTableWidgetItem("ДТП"))
 
+        cursor.execute(""" INSERT INTO logs(logs_time, logs_status, logs_number)
+                           VALUES(%s, %s, %s) """, 
+                           (time_str, "ДТП", text))
+        conn.commit()
+        cursor.close()
+
     def setup_chart(self):
-        """Альтернативный вариант без проверки layout"""
-        # Полностью очищаем widget_5
+        """График соотношения исправных и сломанных автобусов"""
+
+        # Очистка виджета
         for child in self.widget_6.children():
             child.deleteLater()
 
-        # Создаем новый layout
+        # Создание layout
         new_layout = QtWidgets.QVBoxLayout(self.widget_6)
         new_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Создаем и добавляем график
+        # Создание графика
         self.figure, self.ax = plt.subplots()
         self.canvas = FigureCanvas(self.figure)
         new_layout.addWidget(self.canvas)
 
-        # Рисуем данные
-        self.ax.plot([1, 2, 3], [4, 5, 6])
+        # Данные (в реальности — получи из БД)
+        cursor = conn.cursor()
+        cursor.execute(" SELECT COUNT(bus_id) FROM bus ")
+        working = cursor.fetchall()[0][0]
+        cursor.execute(" SELECT COUNT(bus_id) FROM bus WHERE service = 'true' ")
+        broken = cursor.fetchall()[0][0]
+
+        labels = ['Исправные', 'Сломанные']
+        sizes = [working, broken]
+        colors = ['#4CAF50', '#F44336']  # зелёный и красный
+
+        self.ax.clear()  # очищаем ось (если график перерисовывается)
+        self.ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
+        self.ax.axis('equal')  # чтобы круг не был эллипсом
         self.canvas.draw()
+
+    from datetime import datetime
+    from collections import Counter
+    from PyQt5 import QtWidgets
+    from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+    import matplotlib.pyplot as plt
+
+    def setup_chart_2(self):
+        """График динамики старения автопарка (распределение автобусов по годам выпуска)"""
+
+        # Очистка предыдущих виджетов
+        for child in self.widget_7.children():
+            child.deleteLater()
+
+        # Создание нового layout
+        new_layout = QtWidgets.QVBoxLayout(self.widget_7)
+        new_layout.setContentsMargins(0, 0, 0, 0)
+
+        # Получение данных из базы
+        cursor = conn.cursor()
+        cursor.execute("SELECT year_of_release FROM bus")
+        results = cursor.fetchall()
+
+        years = []
+        for row in results:
+            date_str = row[0]
+            try:
+                if date_str:
+                    # Преобразуем строку в дату, формат: DD-MM-YYYY
+                    date_obj = datetime.strptime(date_str.strip(), "%d-%m-%Y")
+                    years.append(date_obj.year)
+            except Exception as e:
+                print(f"Ошибка обработки даты '{date_str}': {e}")
+                continue
+
+        if not years:
+            label = QtWidgets.QLabel("Нет корректных дат для построения графика")
+            new_layout.addWidget(label)
+            return
+
+        # Подсчет количества автобусов по годам
+        total = len(years)
+        count_by_year = Counter(years)
+        sorted_years = sorted(count_by_year.items())
+        labels = [str(year) for year, _ in sorted_years]
+        sizes = [count / total * 100 for _, count in sorted_years]
+
+        # Построение графика
+        figure2, ax2 = plt.subplots()
+        canvas2 = FigureCanvas(figure2)
+        new_layout.addWidget(canvas2)
+
+        ax2.bar(labels, sizes, color='#2196F3')
+        ax2.set_ylabel("Процент автобусов")
+        ax2.set_xlabel("Год выпуска")
+        ax2.set_title("Динамика старения автопарка")
+        canvas2.draw()
 
     def open_bus_window(self):
         self.widtegBus.setVisible(True)
@@ -291,6 +425,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.label_9.setText("Исправных: " + str(cursor.fetchall()[0][0]))
             cursor.execute(""" SELECT COUNT(bus_id) FROM bus WHERE service <> false; """)
             self.label_10.setText("В ремонте: " + str(cursor.fetchall()[0][0]))
+            self.LoadDriversToComboBox()
+            self.setup_chart()
+            self.setup_chart_2()
             cursor.close()
         else:
             print('Неверный логин/пароль')
@@ -425,5 +562,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()
+    window.setWindowTitle("Автобусный парк")
     window.show()
     sys.exit(app.exec_())

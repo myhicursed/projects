@@ -430,7 +430,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.setup_chart_2()
             cursor.close()
         else:
-            print('Неверный логин/пароль')
+            QMessageBox.information(self, "Предупреждение", "Неверный логин или пароль!")
+            #print('Неверный логин/пароль')
 
     def AddNewBus(self):
         number = self.lineEdit_state_number.text()
@@ -537,7 +538,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         cursor.execute(" SELECT route_start FROM route WHERE route_name = %s ", (name, ))
         res = cursor.fetchall()
         if not res:
-            QMessageBox.information(self, "Предупреждение", "Маршрута с таким названием не существует!")
+            QMessageBox.information(self, "Предупреждение", "Маршрут с таким названием не существует!")
             return
         start = res[0][0]
         cursor.execute(" SELECT route_finally FROM route WHERE route_name = %s ", (name, ))

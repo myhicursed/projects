@@ -58,7 +58,7 @@ class BusBot(QObject):
         self.bot.register_next_step_handler(msg, self.get_password)
             
     def handle_message(self, message):
-        if message.text == 'Сообщить о ДТП💀':
+        if message.text == 'Сообщить о ДТП🆘':
             msg = self.bot.send_message(message.chat.id, "Укажите государственный регистрационный номер автобуса")
             self.bot.register_next_step_handler(msg, self.SendMessageToDispatcher)
         if message.text == 'Показать график📊':
@@ -145,7 +145,7 @@ class BusBot(QObject):
                 btn2 = types.KeyboardButton('Начать смену🚍')
                 btn3 = types.KeyboardButton('Завершить смену🙅')
                 btn4 = types.KeyboardButton('Сообщить о поломке💁‍♀️')
-                btn5 = types.KeyboardButton('Сообщить о ДТП💀')
+                btn5 = types.KeyboardButton('Сообщить о ДТП🆘')
                 markup.add(btn1, btn2, btn3, btn4, btn5)
                 self.bot.send_message(message.chat.id, '✅ Авторизация успешна!', reply_markup=markup)
             else:

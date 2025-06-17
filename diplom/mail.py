@@ -437,8 +437,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         vin = self.lineEdit_vin.text()
         model = self.lineEdit_bus_model.text()
         year = self.lineEdit_bus_year.text()
+        try:
+            date_obj = datetime.strptime(year, '%d-%m-%Y')
+            #print("Дата введена корректно:", date_obj)
+        except ValueError:
+            QMessageBox.information(self, "Предупреждение", "Введите дату в формате: 01-01-2025")
+            #print("Неверный формат или некорректная дата. Используйте формат DD-MM-YYYY")
+            return
         odometer = self.lineEdit_odometer.text()
-        odometer = int(odometer)
+        if odometer.isdigit():
+            odometer = int(odometer)
+        else:
+            QMessageBox.information(self, "Предупреждение", "В строке пробег должны быть только числа!")
+            return
         cursor = conn.cursor()
         cursor.execute("INSERT INTO bus (state_number, VIN, model, year_of_release, odometer) VALUES (%s, %s, %s, %s, %s)",
                        (number, vin, model, year, odometer))
@@ -513,9 +524,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         name = self.lineEdit.text()
         bus_number = int(self.lineEdit_2.text())
         route_time = self.lineEdit_3.text()
+        try:
+            time_obj = datetime.strptime(route_time, '%d-%m-%Y %H:%M:%S').time()
+        except ValueError:
+            QMessageBox.warning(
+                self,
+                "Некорректный формат времени",
+                "Введите время в формате ЧЧ:ММ или ЧЧ:ММ:СС"
+            )
+            return
         cursor = conn.cursor()
         cursor.execute(" SELECT route_start FROM route WHERE route_name = %s ", (name, ))
-        start = cursor.fetchall()[0][0]
+        res = cursor.fetchall()
+        if not res:
+            QMessageBox.information(self, "Предупреждение", "Маршрута с таким названием не существует!")
+            return
+        start = res[0][0]
         cursor.execute(" SELECT route_finally FROM route WHERE route_name = %s ", (name, ))
         final = cursor.fetchall()[0][0]
         cursor.execute(""" INSERT INTO orders (route_name, bus_number, route_start, route_finally, route_time) 

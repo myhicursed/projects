@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1294</width>
+    <height>889</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>10</y>
+      <width>931</width>
+      <height>861</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>929</width>
+       <height>500</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>500</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(244, 232, 211);
+border: 1px solid black;</string>
+        </property>
+        <widget class="QLabel" name="label_56">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>+7 223 322 22 32</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_57">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>20</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>10%</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_58">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Рейтинг: 10</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_59">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Тип | Наименование партнера</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_60">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Директор</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_2" native="true">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(244, 232, 211);
+border: 1px solid black;</string>
+        </property>
+        <widget class="QLabel" name="label_61">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>+7 223 322 22 32</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_62">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>20</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>10%</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_63">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Рейтинг: 10</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_64">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Тип | Наименование партнера</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_65">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Директор</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_5" native="true">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(244, 232, 211);
+border: 1px solid black;</string>
+        </property>
+        <widget class="QLabel" name="label_76">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>+7 223 322 22 32</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_77">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>20</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>10%</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_78">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Рейтинг: 10</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_79">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Тип | Наименование партнера</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_80">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Директор</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_3" native="true">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(244, 232, 211);
+border: 1px solid black;</string>
+        </property>
+        <widget class="QLabel" name="label_66">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>+7 223 322 22 32</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_67">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>20</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>10%</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_68">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Рейтинг: 10</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_69">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Тип | Наименование партнера</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_70">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Директор</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_4" native="true">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(244, 232, 211);
+border: 1px solid black;</string>
+        </property>
+        <widget class="QLabel" name="label_71">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>+7 223 322 22 32</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_72">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>20</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>10%</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_73">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Рейтинг: 10</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_74">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Тип | Наименование партнера</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_75">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 0px solid black;</string>
+         </property>
+         <property name="text">
+          <string>Директор</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>-30</y>
+      <width>20</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>740</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(103, 186, 128);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>256</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>290</y>
+      <width>351</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1375</width>
+    <height>861</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>30</y>
+      <width>921</width>
+      <height>801</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>919</width>
+       <height>799</height>
+      </rect>
+     </property>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>851</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(244, 232, 211);</string>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тип | Партнер</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Директор</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>151</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Телефон</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>750</x>
+         <y>20</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>%</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>110</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Рейтинг</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>256</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>-33</x>
+      <y>290</y>
+      <width>461</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>360</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(103, 186, 128);</string>
+    </property>
+    <property name="text">
+     <string>Добавить партнера</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>270</y>
+      <width>781</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(244, 232, 211);</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>300</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(103, 186, 128);</string>
+     </property>
+     <property name="text">
+      <string>Создать</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>20</y>
+       <width>491</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Тип</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Партнер</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_2"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Директор</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_3"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>email</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEdit_4"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Телефон</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEdit_5"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Адрес</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="lineEdit_6"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>ИНН</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="lineEdit_7"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Рейтинг</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="lineEdit_8"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

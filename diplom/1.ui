@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1011</width>
+    <width>1646</width>
     <height>799</height>
    </rect>
   </property>
@@ -1362,15 +1362,15 @@ QPushButton:pressed {
       </font>
      </property>
      <property name="text">
-      <string>Оценка работоспособности </string>
+      <string>Анализ работоспособности </string>
      </property>
     </widget>
     <widget class="QLabel" name="label_42">
      <property name="geometry">
       <rect>
-       <x>560</x>
+       <x>510</x>
        <y>510</y>
-       <width>201</width>
+       <width>311</width>
        <height>31</height>
       </rect>
      </property>
@@ -1383,7 +1383,7 @@ QPushButton:pressed {
       </font>
      </property>
      <property name="text">
-      <string>Оценка автопарка</string>
+      <string>Анализ состояния автопарка</string>
      </property>
     </widget>
    </widget>
@@ -1468,7 +1468,7 @@ QPushButton:pressed {
    <widget class="QWidget" name="widget_8" native="true">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>9999</x>
       <y>260</y>
       <width>681</width>
       <height>261</height>
@@ -1684,7 +1684,7 @@ QPushButton:pressed {
    <widget class="QWidget" name="widget_9" native="true">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>9999</x>
       <y>230</y>
       <width>681</width>
       <height>331</height>

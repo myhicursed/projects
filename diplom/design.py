@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1011, 799)
+        MainWindow.resize(1646, 799)
         MainWindow.setStyleSheet("background-color: rgb(246, 242, 235);\n"
 "\n"
 "\n"
@@ -686,7 +686,7 @@ class Ui_MainWindow(object):
         self.label_41.setFont(font)
         self.label_41.setObjectName("label_41")
         self.label_42 = QtWidgets.QLabel(self.widget_5)
-        self.label_42.setGeometry(QtCore.QRect(560, 510, 201, 31))
+        self.label_42.setGeometry(QtCore.QRect(510, 510, 311, 31))
         font = QtGui.QFont()
         font.setFamily("Sitka Small")
         font.setPointSize(14)
@@ -737,7 +737,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_13.setObjectName("pushButton_13")
         self.widget_8 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_8.setGeometry(QtCore.QRect(220, 260, 681, 261))
+        self.widget_8.setGeometry(QtCore.QRect(9999, 260, 681, 261))
         self.widget_8.setStyleSheet("background-color: rgb(44, 54, 57);")
         self.widget_8.setObjectName("widget_8")
         self.pushButton_14 = QtWidgets.QPushButton(self.widget_8)
@@ -837,7 +837,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_9.setObjectName("pushButton_9")
         self.widget_9 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_9.setGeometry(QtCore.QRect(220, 230, 681, 331))
+        self.widget_9.setGeometry(QtCore.QRect(9999, 230, 681, 331))
         self.widget_9.setStyleSheet("background-color: rgb(44, 54, 57);")
         self.widget_9.setObjectName("widget_9")
         self.label_11 = QtWidgets.QLabel(self.widget_9)
@@ -1112,8 +1112,8 @@ class Ui_MainWindow(object):
         self.pushButton_7.setText(_translate("MainWindow", "Найти"))
         self.pushButton_15.setText(_translate("MainWindow", "Показать все"))
         self.label_28.setText(_translate("MainWindow", "Аналитика"))
-        self.label_41.setText(_translate("MainWindow", "Оценка работоспособности "))
-        self.label_42.setText(_translate("MainWindow", "Оценка автопарка"))
+        self.label_41.setText(_translate("MainWindow", "Анализ работоспособности "))
+        self.label_42.setText(_translate("MainWindow", "Анализ состояния автопарка"))
         self.label_27.setText(_translate("MainWindow", "Текущие рейсы"))
         self.pushButton_13.setText(_translate("MainWindow", "Запланировать"))
         self.pushButton_14.setText(_translate("MainWindow", "Создать"))

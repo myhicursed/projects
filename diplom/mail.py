@@ -307,13 +307,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return None
 
     def load_static_map(self):
-        """Загружает статичную карту с маршрутом по 5 точкам"""
+        #Загружаем статичную карту с маршрутом по 5 точкам
         try:
-            # Получаем координаты для всех 5 точек
             points = []
             for line_edit in [self.lineEdit_13, self.lineEdit_14,
                               self.lineEdit_15, self.lineEdit_16,
-                              self.lineEdit_17]:  # Добавьте ваши QLineEdit для точек C, D, E
+                              self.lineEdit_17]:
                 if line_edit.text().strip():
                     coords = self.get_coordinates(line_edit.text(), '017c25cb-c2fe-43ef-b58e-e49320ff407e')
                     if coords:
@@ -412,8 +411,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                                               FROM users
                                               WHERE user_login = %s;
 """, (u_login,))
-        record_password = cursor.fetchall()
-        current_password = record_password[0]
+        try:
+            record_password = cursor.fetchall()
+            current_password = record_password[0]
+        except Exception:
+            QMessageBox.critical(self, "Ошибка", "Неверный логин или пароль!")
+            return
         if u_password == current_password[0]:
             print('Авторизация пройдена')
             self.authorizationToDatabaseFromDispatcher()
@@ -442,7 +445,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             date_obj = datetime.strptime(year, '%d-%m-%Y')
             #print("Дата введена корректно:", date_obj)
         except ValueError:
-            QMessageBox.information(self, "Предупреждение", "Введите дату в формате: 01-01-2025")
+            QMessageBox.critical(self, "Ошибка", "Введите дату в формате: 01-01-2025")
             #print("Неверный формат или некорректная дата. Используйте формат DD-MM-YYYY")
             return
         odometer = self.lineEdit_odometer.text()
@@ -528,10 +531,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             time_obj = datetime.strptime(route_time, '%d-%m-%Y %H:%M:%S').time()
         except ValueError:
-            QMessageBox.warning(
+            QMessageBox.critical(
                 self,
-                "Некорректный формат времени",
-                "Введите время в формате ЧЧ:ММ или ЧЧ:ММ:СС"
+                "Ошибка",
+                "Введите время в формате ЧЧ:ММ:СС"
             )
             return
         cursor = conn.cursor()

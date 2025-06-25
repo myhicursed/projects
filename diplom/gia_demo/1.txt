@@ -1,0 +1,39 @@
+создание роли
+CREATE ROLE manager WITH LOGIN PASSWORD '123'
+
+права на новые таблицы
+GRANT CONNECT ON DATABASE mozaika TO manager;
+GRANT USAGE, CREATE ON SCHEMA public TO manager;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES, TRIGGER ON TABLES TO manager;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO manager;
+права на созданную таблицу
+GRANT ALL PRIVILEGES ON TABLE test TO manager;
+на все таблицы в одной схеме
+GRANT ALL ON ALL TABLES IN SCHEMA public TO manager;
+
+
+ВНЕШНИЙ КЛЮЧ СОЗДАНИЕ
+CREATE TABLE partners(
+	partner_id SERIAL PRIMARY KEY,
+	partner_type VARCHAR(50) NOT NULL,
+	partner_name VARCHAR(100) NOT NULL UNIQUE,
+	director VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	telephone VARCHAR(100) NOT NULL,
+	adres VARCHAR(100) NOT NULL,
+	inn VARCHAR(100) NOT NULL,
+	rate VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE partners_products(
+	partner_products_id SERIAL PRIMARY KEY,
+	products VARCHAR(100) NOT NULL,
+	partner_name VARCHAR(100) NOT NULL,
+	products_amount INT NOT NULL,
+	date_resale DATE,
+	FOREIGN KEY (partner_name) REFERENCES partners (partner_name)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+)
+
+

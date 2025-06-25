@@ -19,7 +19,7 @@ cursor = conn.cursor()
 for _, row in df.iterrows():
     cursor.execute("""
         INSERT INTO partners(partner_type, partner_name, director, email, telephone,
-            adress, inn, rate) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            adres, inn, rate) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """, (
         row['Тип партнера'],
         row['Наименование партнера'],

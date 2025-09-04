@@ -25,7 +25,7 @@ class BusBot(QObject):
         port = '5432'
         )
 
-        self.bot = telebot.TeleBot('7755694735:AAFuwcul-QlD8D8B1N44AeB0V7ybh1NAdjI')
+        self.bot = telebot.TeleBot('###')
         self.user_data = {}
 
         self.setup_handlers()

@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1646, 799)
+        MainWindow.resize(1009, 799)
         MainWindow.setStyleSheet("background-color: rgb(246, 242, 235);\n"
 "\n"
 "\n"
@@ -737,7 +737,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_13.setObjectName("pushButton_13")
         self.widget_8 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_8.setGeometry(QtCore.QRect(9999, 260, 681, 261))
+        self.widget_8.setGeometry(QtCore.QRect(220, 260, 681, 261))
         self.widget_8.setStyleSheet("background-color: rgb(44, 54, 57);")
         self.widget_8.setObjectName("widget_8")
         self.pushButton_14 = QtWidgets.QPushButton(self.widget_8)
@@ -837,7 +837,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_9.setObjectName("pushButton_9")
         self.widget_9 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_9.setGeometry(QtCore.QRect(9999, 230, 681, 331))
+        self.widget_9.setGeometry(QtCore.QRect(220, 230, 681, 331))
         self.widget_9.setStyleSheet("background-color: rgb(44, 54, 57);")
         self.widget_9.setObjectName("widget_9")
         self.label_11 = QtWidgets.QLabel(self.widget_9)

@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1646</width>
+    <width>1009</width>
     <height>799</height>
    </rect>
   </property>
@@ -1468,7 +1468,7 @@ QPushButton:pressed {
    <widget class="QWidget" name="widget_8" native="true">
     <property name="geometry">
      <rect>
-      <x>9999</x>
+      <x>220</x>
       <y>260</y>
       <width>681</width>
       <height>261</height>
@@ -1684,7 +1684,7 @@ QPushButton:pressed {
    <widget class="QWidget" name="widget_9" native="true">
     <property name="geometry">
      <rect>
-      <x>9999</x>
+      <x>220</x>
       <y>230</y>
       <width>681</width>
       <height>331</height>

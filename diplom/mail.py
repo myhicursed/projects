@@ -163,21 +163,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def setup_chart(self):
         """График соотношения исправных и сломанных автобусов"""
-
-        # Очистка виджета
         for child in self.widget_6.children():
             child.deleteLater()
-
-        # Создание layout
         new_layout = QtWidgets.QVBoxLayout(self.widget_6)
         new_layout.setContentsMargins(0, 0, 0, 0)
-
-        # Создание графика
         self.figure, self.ax = plt.subplots()
         self.canvas = FigureCanvas(self.figure)
         new_layout.addWidget(self.canvas)
-
-        # Данные (в реальности — получи из БД)
         cursor = conn.cursor()
         cursor.execute(" SELECT COUNT(bus_id) FROM bus ")
         working = cursor.fetchall()[0][0]
@@ -188,29 +180,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         sizes = [working, broken]
         colors = ['#4CAF50', '#F44336']  # зелёный и красный
 
-        self.ax.clear()  # очищаем ось (если график перерисовывается)
+        self.ax.clear()
         self.ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
         self.ax.axis('equal')  # чтобы круг не был эллипсом
         self.canvas.draw()
 
-    from datetime import datetime
-    from collections import Counter
-    from PyQt5 import QtWidgets
-    from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-    import matplotlib.pyplot as plt
-
     def setup_chart_2(self):
         """График динамики старения автопарка (распределение автобусов по годам выпуска)"""
-
-        # Очистка предыдущих виджетов
         for child in self.widget_7.children():
             child.deleteLater()
 
-        # Создание нового layout
         new_layout = QtWidgets.QVBoxLayout(self.widget_7)
         new_layout.setContentsMargins(0, 0, 0, 0)
-
-        # Получение данных из базы
         cursor = conn.cursor()
         cursor.execute("SELECT year_of_release FROM bus")
         results = cursor.fetchall()
@@ -220,7 +201,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             date_str = row[0]
             try:
                 if date_str:
-                    # Преобразуем строку в дату, формат: DD-MM-YYYY
                     date_obj = datetime.strptime(date_str.strip(), "%d-%m-%Y")
                     years.append(date_obj.year)
             except Exception as e:
@@ -307,7 +287,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return None
 
     def load_static_map(self):
-        #Загружаем статичную карту с маршрутом по 5 точкам
         try:
             points = []
             for line_edit in [self.lineEdit_13, self.lineEdit_14,
@@ -323,20 +302,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
             size = "650,450"
             api_key = "08b76ad6-f685-4f52-b73d-ea6981593637"
-
-            # Формируем часть URL с линией маршрута
             pl_part = f"&pl=c:8822DDC0,w:5,{','.join(points)}" if len(points) > 1 else ""
 
-            # Формируем часть URL с метками точек
             pt_parts = []
             for i, point in enumerate(points):
-                # Разные иконки для первой, последней и промежуточных точек
                 if i == 0:
-                    marker = "pm2rdm"  # Красная метка
+                    marker = "pm2rdm"
                 elif i == len(points) - 1:
-                    marker = "pm2blm"  # Синяя метка
+                    marker = "pm2blm"
                 else:
-                    marker = "pm2grm"  # Зеленая метка для промежуточных точек
+                    marker = "pm2grm"
                 pt_parts.append(f"{point},{marker}")
 
             pt_part = f"&pt={'~'.join(pt_parts)}"
@@ -344,8 +319,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             url = (
                 f"https://static-maps.yandex.ru/v1?"
                 f"size={size}"
-                f"{pl_part}"  # Ломаная линия
-                f"{pt_part}"  # Метки
+                f"{pl_part}"  
+                f"{pt_part}"  
                 f"&apikey={api_key}"
             )
 
@@ -368,7 +343,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             error_msg = f"Ошибка: {str(e)}"
             print(error_msg)
 
-            # Создаём информативную заглушку
             error_pixmap = QtGui.QPixmap(871, 371)
             error_pixmap.fill(QtGui.QColor("#f0f0f0"))
 
@@ -554,21 +528,31 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QMessageBox.information(self, "Создание рейса", "Рейс успешно запланирован!")
         self.ShowAllOrders()
 
+    from datetime import datetime
+
     def ShowAllOrders(self):
         cursor = conn.cursor()
-        cursor.execute(""" SELECT route_name AS "Маршрут", bus_number AS "Номер автобуса", route_start AS "Пункт отправки", route_finally AS "Пункт прибытия", route_time AS "Время отправки" FROM orders; """)
-        len_row = cursor.rowcount
+        cursor.execute(""" 
+            SELECT 
+                route_name AS "Маршрут", 
+                bus_number AS "Номер автобуса", 
+                route_start AS "Пункт отправки", 
+                route_finally AS "Пункт прибытия", 
+                TO_CHAR(route_time, 'DD-MM-YYYY HH24:MI') AS "Время отправки"
+            FROM orders;
+        """)
         rows = cursor.fetchall()
         cols = cursor.description
         self.tableWidget_2.setColumnCount(len(cols))
-        self.tableWidget_2.setRowCount(len_row)
+        self.tableWidget_2.setRowCount(len(rows))
         for i in range(len(cols)):
             self.tableWidget_2.setHorizontalHeaderItem(i, QTableWidgetItem(cols[i][0]))
-        for i in range(len_row):
-            for j in range(len(rows[i])):
-                item = QTableWidgetItem(str(rows[i][j]))
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                item = QTableWidgetItem(str(value))
                 self.tableWidget_2.setItem(i, j, item)
         cursor.close()
+
     def ShowAllBuses(self):
         cursor = conn.cursor()
         cursor.execute(""" SELECT state_number AS "Гос.Номер", VIN, model as "Модель", year_of_release as "Год", odometer as "Пробег" FROM bus;  """)

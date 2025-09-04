@@ -144,7 +144,7 @@ int wmain(int argc, wchar_t *argv[])
     std::wstring value;
     std::wstring correctFlag;
     std::wstring correctValue;
-    DWORD sizeStr = 100;// todo почему 100?
+    DWORD sizeStr = 100;
     RegEdit reg(MAINPATH);
     std::wstring arrKeys[9]{REG_KEY1, REG_KEY2, REG_KEY3, REG_KEY4, REG_KEY5, REG_KEY6, REG_KEY7, REG_KEY8, REG_KEY9};
     std::unordered_map<std::wstring, std::wstring> regs;

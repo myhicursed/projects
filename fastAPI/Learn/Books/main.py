@@ -1,7 +1,10 @@
 from fastapi import FastAPI, HTTPException
 import uvicorn
 from pydantic import BaseModel
+from users import api_router
+
 app = FastAPI()
+app.include_router(api_router)
 
 books = [
     {

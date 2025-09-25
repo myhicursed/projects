@@ -113,24 +113,78 @@
     <!-- Основная часть -->
     <div class="main">
         <!-- Левая панель -->
-        <div class="sidebar">
-            <div class="user">Иван</div>
-            <div class="user">Мария</div>
-            <div class="user">Алексей</div>
-        </div>
+        <div class="sidebar" id="user-list"></div>
 
         <!-- Правая панель (чат) -->
         <div class="chat">
-            <div class="messages">
-                <div class="message">Привет!</div>
-                <div class="message self">Здорово!</div>
-                <div class="message">Как дела?</div>
-            </div>
+            <div class="messages" id="messages"></div>
             <div class="input-box">
-                <input type="text" placeholder="Введите сообщение...">
-                <button>Отправить</button>
+                <input type="text" id="message-input" placeholder="Введите сообщение...">
+                <button id="send-btn">Отправить</button>
             </div>
         </div>
     </div>
+
+    <script>
+        let currentUserId = localStorage.getItem("user_id"); // тот, кто залогинился
+        let selectedUserId = null;
+
+        async function loadUsers() {
+            const res = await fetch("http://127.0.0.1:8000/users");
+            const users = await res.json();
+            const userList = document.getElementById("user-list");
+            userList.innerHTML = "";
+            users.forEach(u => {
+                if (u.id != currentUserId) {
+                    const div = document.createElement("div");
+                    div.className = "user";
+                    div.textContent = u.login;
+                    div.onclick = () => selectUser(u.id, u.login);
+                    userList.appendChild(div);
+                }
+            });
+        }
+
+        async function selectUser(id, login) {
+            selectedUserId = id;
+            document.getElementById("messages").innerHTML = "";
+            loadMessages();
+        }
+
+        async function loadMessages() {
+            if (!selectedUserId) return;
+            const res = await fetch(`http://127.0.0.1:8000/messages?sender_id=${currentUserId}&receiver_id=${selectedUserId}`);
+            const msgs = await res.json();
+            const container = document.getElementById("messages");
+            container.innerHTML = "";
+            msgs.forEach(m => {
+                const div = document.createElement("div");
+                div.className = "message " + (m.sender_id == currentUserId ? "self" : "");
+                div.textContent = m.text;
+                container.appendChild(div);
+            });
+        }
+
+        document.getElementById("send-btn").onclick = async () => {
+            const input = document.getElementById("message-input");
+            if (!selectedUserId || !input.value.trim()) return;
+            await fetch("http://127.0.0.1:8000/messages", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    sender_id: parseInt(currentUserId),
+                    receiver_id: selectedUserId,
+                    text: input.value
+                })
+            });
+            input.value = "";
+            loadMessages();
+        };
+
+        // Загружаем список пользователей при старте
+        loadUsers();
+        // Автообновление сообщений
+        setInterval(loadMessages, 3000);
+    </script>
 </body>
 </html>

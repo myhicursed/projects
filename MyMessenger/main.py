@@ -4,10 +4,12 @@ import uvicorn
 from core.database.database import SessionLocal, engine, Base
 from core.database.crud import create_user, get_user_by_username
 from core.auth.auth import hash_password, verify_password
-from core.schemas.schema import UserCreate, UserLogin, UserResponse
+from core.schemas.schema import UserCreate, UserLogin, UserResponse, MessageCreate, MessageResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from core.database.models import User, Message
+from typing import List
 
 app = FastAPI()
 
@@ -31,6 +33,25 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@app.get("/users", response_model=List[UserResponse])
+def get_users(db: Session = Depends(get_db)):
+    return db.query(User).all()
+
+@app.post("/messages", response_model=MessageResponse)
+def send_message(msg: MessageCreate, db: Session = Depends(get_db)):
+    db_msg = Message(**msg.dict())
+    db.add(db_msg)
+    db.commit()
+    db.refresh(db_msg)
+    return db_msg
+
+@app.get("/messages", response_model=List[MessageResponse])
+def get_messages(sender_id: int, receiver_id: int, db: Session = Depends(get_db)):
+    return db.query(Message).filter(
+        ((Message.sender_id == sender_id) & (Message.receiver_id == receiver_id)) |
+        ((Message.sender_id == receiver_id) & (Message.receiver_id == sender_id))
+    ).order_by(Message.timestamp).all()
 
 @app.post("/register", response_model=UserResponse)
 def register(user: UserCreate, db: Session = Depends(get_db)):

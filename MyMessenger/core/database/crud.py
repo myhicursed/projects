@@ -5,7 +5,7 @@ from .models import User
 
 def create_user(db: Session, user: UserCreate):
     hashed_pw = hash_password(user.password)
-    db_user = User(username=user.username, hashed_password=hashed_pw)
+    db_user = User(login=user.login, password=hashed_pw)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)

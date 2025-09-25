@@ -15,7 +15,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"]
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.mount("/templates", StaticFiles(directory="templates"), name="templates")
@@ -68,5 +71,5 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     return {"message": "Успешно", "user_id": db_user.id}
 
 
-if __name__ == '__main__':
-    uvicorn.run(app)
+#if __name__ == '__main__':
+#    uvicorn.run(app, port=8000)

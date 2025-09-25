@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myhicursed</title>
     <style>
         body {
@@ -12,7 +13,6 @@
             flex-direction: column;
         }
 
-        /* Навигационная панель */
         .navbar {
             height: 60px;
             background-color: #222;
@@ -24,19 +24,19 @@
             font-weight: bold;
         }
 
-        /* Основная рабочая область (под навбаром) */
         .main {
             flex: 1;
             display: flex;
+            overflow: hidden;
         }
 
-        /* Левая панель (список пользователей) */
         .sidebar {
             width: 20%;
             background-color: #f4f4f4;
             border-right: 1px solid #ddd;
             padding: 10px;
             box-sizing: border-box;
+            overflow-y: auto;
         }
 
         .user {
@@ -52,7 +52,6 @@
             background: #eaeaea;
         }
 
-        /* Правая часть (чат) */
         .chat {
             flex: 1;
             display: flex;
@@ -72,6 +71,7 @@
             border-radius: 5px;
             background: #e1ffc7;
             max-width: 70%;
+            word-wrap: break-word;
         }
 
         .message.self {
@@ -102,20 +102,41 @@
         .input-box button:hover {
             background: #444;
         }
+
+        /* 📱 Адаптация для телефонов */
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: 150px;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                display: flex;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+
+            .user {
+                flex: 0 0 auto;
+                margin-right: 10px;
+                white-space: nowrap;
+            }
+
+            .chat {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Навигационная панель -->
-    <div class="navbar">
-        myhicursed
-    </div>
-
-    <!-- Основная часть -->
+    <div class="navbar">myhicursed</div>
     <div class="main">
-        <!-- Левая панель -->
         <div class="sidebar" id="user-list"></div>
-
-        <!-- Правая панель (чат) -->
         <div class="chat">
             <div class="messages" id="messages"></div>
             <div class="input-box">
@@ -126,11 +147,11 @@
     </div>
 
     <script>
-        let currentUserId = localStorage.getItem("user_id"); // тот, кто залогинился
+        let currentUserId = localStorage.getItem("user_id");
         let selectedUserId = null;
 
         async function loadUsers() {
-            const res = await fetch("http://127.0.0.1:8000/users");
+            const res = await fetch("/users");
             const users = await res.json();
             const userList = document.getElementById("user-list");
             userList.innerHTML = "";
@@ -139,13 +160,13 @@
                     const div = document.createElement("div");
                     div.className = "user";
                     div.textContent = u.login;
-                    div.onclick = () => selectUser(u.id, u.login);
+                    div.onclick = () => selectUser(u.id);
                     userList.appendChild(div);
                 }
             });
         }
 
-        async function selectUser(id, login) {
+        async function selectUser(id) {
             selectedUserId = id;
             document.getElementById("messages").innerHTML = "";
             loadMessages();
@@ -153,7 +174,7 @@
 
         async function loadMessages() {
             if (!selectedUserId) return;
-            const res = await fetch(`http://127.0.0.1:8000/messages?sender_id=${currentUserId}&receiver_id=${selectedUserId}`);
+            const res = await fetch(`/messages?sender_id=${currentUserId}&receiver_id=${selectedUserId}`);
             const msgs = await res.json();
             const container = document.getElementById("messages");
             container.innerHTML = "";
@@ -168,7 +189,7 @@
         document.getElementById("send-btn").onclick = async () => {
             const input = document.getElementById("message-input");
             if (!selectedUserId || !input.value.trim()) return;
-            await fetch("http://127.0.0.1:8000/messages", {
+            await fetch("/messages", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -181,9 +202,7 @@
             loadMessages();
         };
 
-        // Загружаем список пользователей при старте
         loadUsers();
-        // Автообновление сообщений
         setInterval(loadMessages, 3000);
     </script>
 </body>

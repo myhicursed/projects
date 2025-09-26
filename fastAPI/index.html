@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Список книг</title>
+</head>
+<body>
+  <h1>Книги</h1>
+  <div id="books"></div>
+
+  <script>
+    // Делаем запрос к бэкенду
+    fetch('http://localhost:8000/books')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('books');
+
+        data.forEach(book => {
+          const p = document.createElement('p');
+          p.textContent = book.title + " — " + book.author;
+          container.appendChild(p);
+        });
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке:', error);
+      });
+  </script>
+</body>
+</html>

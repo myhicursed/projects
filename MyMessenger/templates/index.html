@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M.H.C</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    height: 60px;
+    background-color: #222;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-buttons button {
+    padding: 6px 8px;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.nav-buttons button:hover { background: #666; }
+
+.main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.user {
+    padding: 10px;
+    margin-bottom: 5px;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.user:hover { background: #eaeaea; }
+
+.chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #fafafa;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #e1ffc7;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.message.self {
+    background: #d0e7ff;
+    margin-left: auto;
+}
+
+.input-box {
+    display: flex;
+    border-top: 1px solid #ddd;
+    position: sticky;
+    bottom: 0;
+    background: #fafafa;
+    z-index: 10;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.input-box button {
+    padding: 10px 20px;
+    border: none;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+.input-box button:hover { background: #444; }
+
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 100px;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 5px;
+    }
+
+    .user {
+        flex: 0 0 auto;
+        margin-right: 10px;
+        white-space: nowrap;
+    }
+
+    .chat {
+        flex: 1;
+    }
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+    <div>M.H.C</div>
+    <div class="nav-buttons">
+        <button onclick="viewUsers()">Пользователи</button>
+        <button onclick="viewChats()">Чаты</button>
+        <button onclick="createChatPrompt()">Создать чат</button>
+    </div>
+</div>
+
+<div class="main">
+    <div class="sidebar" id="user-list"></div>
+    <div class="chat">
+        <div class="messages" id="messages"></div>
+        <div class="input-box">
+            <input type="text" id="message-input" placeholder="Введите сообщение...">
+            <button id="send-btn">Отправить</button>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentUserId = parseInt(localStorage.getItem("user_id"));
+let selectedChatId = null;
+let selectedUserId = null;
+
+const userListEl = document.getElementById("user-list");
+const messagesEl = document.getElementById("messages");
+const inputEl = document.getElementById("message-input");
+const sendBtn = document.getElementById("send-btn");
+
+function viewUsers(){ loadUsers(); }
+function viewChats(){ loadChats(); }
+
+async function loadUsers(){
+    const res = await fetch("/users");
+    const users = await res.json();
+    userListEl.innerHTML = "";
+    users.forEach(u => {
+        if(u.id===currentUserId) return;
+        const div = document.createElement("div");
+        div.className="user";
+        div.textContent=u.login;
+        div.onclick = async () => {
+            selectedChatId=null;
+            selectedUserId=u.id;
+            await loadPrivateMessages(u.id);
+        }
+        userListEl.appendChild(div);
+    });
+}
+
+async function loadChats(){
+    const res = await fetch(`/users/${currentUserId}/chats`);
+    const chats = await res.json();
+    userListEl.innerHTML="";
+    chats.forEach(c => {
+        const div=document.createElement("div");
+        div.className="user";
+        div.textContent=c.name||("Чат "+c.id);
+        div.onclick=async()=>{
+            selectedChatId=c.id;
+            selectedUserId=null;
+            await loadChatMessages(c.id);
+        }
+        userListEl.appendChild(div);
+    });
+}
+
+async function createChatPrompt(){
+    const name=prompt("Название чата (можно пустое):");
+    const membersRaw=prompt("Список логинов участников через запятую (включая ваш логин):");
+    if(!membersRaw) return;
+    const members=membersRaw.split(",").map(s=>s.trim()).filter(Boolean);
+
+    const res=await fetch("/chats/create",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({name,members})
+    });
+    if(!res.ok){
+        const err=await res.json();
+        alert("Ошибка создания чата: "+(err.detail||res.status));
+        return;
+    }
+    const chat=await res.json();
+    await loadChats();
+    selectedChatId=chat.id;
+    await loadChatMessages(chat.id);
+}
+
+async function loadPrivateMessages(otherUserId){
+    selectedChatId=null;
+    const res=await fetch(`/messages?sender_id=${currentUserId}&receiver_id=${otherUserId}`);
+    const msgs=await res.json();
+    renderMessages(msgs);
+}
+
+async function loadChatMessages(chatId){
+    const res=await fetch(`/chats/${chatId}/messages`);
+    const msgs=await res.json();
+    renderMessages(msgs);
+}
+
+function renderMessages(msgs){
+    messagesEl.innerHTML="";
+    msgs.forEach(m=>{
+        const div=document.createElement("div");
+        div.className="message "+((m.sender_id===currentUserId)?"self":"");
+        div.innerHTML=`<strong>${m.sender}</strong>: ${m.text}`;
+        messagesEl.appendChild(div);
+    });
+    messagesEl.scrollTop=messagesEl.scrollHeight;
+}
+
+sendBtn.onclick=async()=>{
+    const text=inputEl.value.trim();
+    if(!text) return;
+    if(selectedChatId){
+        await fetch(`/chats/${selectedChatId}/messages`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({sender_id:currentUserId,text})
+        });
+        await loadChatMessages(selectedChatId);
+    } else if(selectedUserId){
+        await fetch("/messages",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({sender_id:currentUserId,receiver_id:selectedUserId,text})
+        });
+        await loadPrivateMessages(selectedUserId);
+    } else {
+        alert("Выберите чат или пользователя");
+    }
+    inputEl.value="";
+}
+
+loadChats();
+setInterval(()=>{
+    if(selectedChatId) loadChatMessages(selectedChatId);
+    if(selectedUserId) loadPrivateMessages(selectedUserId);
+},3000);
+</script>
+</body>
+</html>
